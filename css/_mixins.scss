@@ -1,0 +1,12 @@
+@mixin dispFlex($justifyC,$alignI,$flexDir) {
+    display: flex;
+    justify-content: $justifyC;
+    flex-direction: $flexDir;
+    align-items: $alignI;
+}
+
+@mixin transformScale($Y, $X, $effect, $origin) {
+   transform: scale($Y, $X);
+   transition: transform .3s $effect;
+   transform-origin: $origin;
+}

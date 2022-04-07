@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import './variables';
+@import './mixins';
+@import './general-styles';
+/* Main */
+
+header {
+
+    position: relative;
+    width: 100%;
+    height: 8vh;
+    z-index: 100;
+
+    nav {
+        
+        position: fixed;
+        height: 8vh;
+        width: 100%;
+        @include dispFlex(space-between,flex-start,row);
+        background-color: $brightOrange;
+
+        ul {
+            height: 100%;
+        }
+
+        ul li {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            flex-shrink: 0;
+            z-index: 1;
+
+            &:hover::before {
+                transform: scaleY(1);
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+            }
+        }
+
+        ul li::before {
+            position: absolute;
+            z-index: -1;
+            content: "";
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background-color: $mediumOrange;
+            @include transformScale(1,0,ease-in,bottom)
+        }
+
+        ul li::after {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background-color: $black;
+            @include transformScale(0,1,ease-out,center)
+        }
+    
+        ul a {
+            @include dispFlex(center,center,row);
+            text-transform: uppercase;
+            text-align: left;
+            padding: .5em 1.2em;
+            color: $white;
+            letter-spacing: .2px;
+            font-weight: 600;
+            height: 100%;
+        }
+    }
+
+    .leftNav {
+
+        @include dispFlex(space-between,center,row);
+        padding: 0 1em;
+        flex-basis: 100%;
+        height: 100%;
+
+        #logoContainer {
+            position: relative;
+            height: 70%;
+            flex-basis: 5%;
+
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        ul {
+            @include dispFlex(space-around,center,row);
+            flex-basis: 40%;
+        }
+    }
+
+    .rightNav {
+        @include dispFlex(space-around,center,row );
+
+        flex-basis: 18%;
+        padding: .5em 1em;
+        height: 100%;
+        background-color: $mediumOrange;
+
+        ul {
+            @include dispFlex(flex-end,center,row);
+            flex-basis: 100%;
+        }
+
+        ul li:first-child {
+            padding-right: 1.5em;
+        }
+
+        ul li:last-child {
+            border-left: 2px solid white;
+            padding-left: 1.5em;
+        }
+    }
+}
+
+main {
+    background: url('../img/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.sectionContent {
+
+    @include dispFlex(space-around,center,row);
+    padding: 1em;
+    height: 95vh;
+
+    &__left {
+
+        flex-basis: 45%;
+
+        h2 {
+            font-size: 3.2em;
+            font-weight: 600;
+            letter-spacing: .5px;
+            line-height: 1.1;
+            color: $white;
+
+            b {
+                color: $brightOrange;
+            }
+        }
+        
+        p {
+            margin-top: .8em;
+            color: rgba($white, .7);
+            font-weight: 300;
+            font-size: 1.7em;
+            max-width: 80%;
+        }
+    }
+
+    &__right {
+        flex-basis: 35%;
+    }
+
+    &__cta-buttons {
+
+        margin-top: 1.2em;
+        display: flex;
+
+    }
+
+    &__whyus {
+        @include dispFlex(center,flex-start,column);
+        border: 2px solid $brightOrange;
+        height: 100%;
+
+        div {
+            position: relative;
+            width: 100%;
+            padding: 1em;
+            @include dispFlex(space-between,center,row);
+            border-bottom: 20px solid $brightOrange;
+
+            h3 {
+                color: $white;
+                margin-left: .8em;
+                font-size: 1.5em;
+                text-transform: uppercase;
+                color: $brightOrange
+            }
+
+            img {
+                position: absolute;
+                right: 0;
+                height: 100%;
+            }
+        }
+
+        ol {
+            @include dispFlex(center,flex-start,column);
+            padding: 1em 2em;
+            list-style: decimal;
+            color: $white;
+            font-size: 1.3em;
+
+            li {
+                line-height: 2;
+            }
+        }
+    }
+
+    &__top {
+
+        h4 {
+            position: relative;
+            left: -4em;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            color: $brightOrange;
+            font-weight: 500;
+        }
+        
+        h3 {
+            position: relative;
+            margin-top: .4em;
+            font-size: 3em;
+            font-weight: 500;
+            color: $white;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: -1.4em;
+                top: 0;
+                width: 1em;
+                height: 100%;
+                background: url(../img/ProfitIcon.svg) no-repeat;
+                background-size: 100%;
+            }
+        }
+    }
+
+    &__steps-bar {
+        
+        position: relative;
+        width: 80%;
+
+        .bar-sections {
+            position: absolute;
+            list-style: decimal;
+            bottom: 100%;
+            width: 100%;
+            @include dispFlex(space-around,stretch,row);
+            color: $white;
+        };
+
+        .bar-item {
+            @include dispFlex(space-between,center,column);
+            width: 12em;
+            padding: .5em .5em 0;
+            cursor: pointer;
+            transition: color .4s linear;
+            z-index: 10;
+
+            h4 {
+                text-transform: uppercase;
+                text-align: center;
+                font-size: 1.2em;
+                font-weight: 400
+            }
+
+            .itemStop {
+                z-index: -1;
+                margin-top: .3em;
+                width: .3em;
+                height: 1.3em;
+                background-color: $white;
+            }
+
+            &.active {
+                background-color: $brightOrange
+            }
+        };
+    }
+
+    &__bar {
+        height: .4em;
+        border-radius: 10px;
+        width: 100%;
+        background-color: $white;
+    }
+
+    &__selectedBarItem {
+        @include dispFlex(space-between,center,row);
+        width: 60%;
+        min-height: 20%;
+
+        div {
+
+            @include dispFlex(space-between,center,row);
+            flex-basis: 40%;
+
+            & > * + * {
+                margin-left: .7em
+            }
+
+            img {
+                width: 4em;
+            }
+
+            h3 {
+                font-size: 2em;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: $white;
+            }
+
+        }
+
+        ul {
+
+            flex-basis: 50%;
+
+            li {
+                position: relative;
+                color: $white;
+                line-height: 2;
+                font-size: 1.3em;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    left: -1.8em;
+                    top: .55em;
+                    width: .3em;
+                    height: .3em;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    border: 5px solid $brightOrange;
+                }
+            }
+        }
+    }
+
+    .teamCard {
+        border: 2px solid $brightOrange;
+        width: 80%;
+        border-radius: 14px;
+        overflow: hidden;
+        @include dispFlex(space-between,stretch,column);
+
+        &__top {
+            
+            position: relative;
+            padding: 1em 1.5em;
+            background-color: $brightOrange;
+
+            h3 {
+                font-size: 2em;
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+
+            div {
+                position: absolute;
+                z-index: 10;
+                right: 0;
+                top: 0;
+                background-color: $white;
+                height: 100%;
+                width: 30%;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    left: -.6em;
+                    top: 0;
+                    width: 3em;
+                    height: 100%;
+                    background-color: $white;
+                    z-index: -1;
+                    transform: skew(-16deg);
+                }
+
+                img {
+                    position: absolute;
+                    width: 4em;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+        }
+
+        &__picture {
+
+            @include dispFlex(center,center,row);
+            padding: 4em 1em;
+
+            img {
+                width: 14em
+            }
+        }
+
+        &__content {
+            @include dispFlex(center,center,row);
+            padding: 2em 1em;
+            background-color: rgba($darkGray, .2);
+
+            p {
+                margin-top: 0;
+                max-width: 90%;
+            }
+        }
+    }
+
+    .teamTree {
+        position: relative;
+        min-height: 35em;
+
+        &__member {
+            position: absolute;
+            width: 2em;
+        }
+
+        &__background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            svg circle {
+            }
+
+            svg circle.active {
+                filter: drop-shadow(0 0 10px $brightOrange);
+            }
+
+            svg image {
+                width: 26.5%;
+                height: 26.5%;
+                clip-path: circle(40% at 50% 50%);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#operar {
+    @include dispFlex(space-around,center,column);
+}

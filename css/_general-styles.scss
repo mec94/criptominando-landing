@@ -1,0 +1,41 @@
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.button {
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: $white;
+    padding: .4em 1.4em;
+    background-color: $brightOrange;
+
+    & + & {
+        margin-left: .7em;
+    }
+
+    &:hover::before {
+        transform: scaleY(1);
+
+    }
+}
+
+.button::before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    width: 100%;
+    height: 99%;
+    bottom: 0;
+    left: 0;
+    background-color: $darkOrange;
+    @include transformScale(1,0,ease-out,bottom)
+}
