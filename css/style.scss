@@ -299,7 +299,7 @@ main {
 
         div {
 
-            @include dispFlex(space-between,center,row);
+            @include dispFlex(flex-start,center,row);
             flex-basis: 40%;
 
             & > * + * {
@@ -346,7 +346,7 @@ main {
 
     .teamCard {
         border: 2px solid $brightOrange;
-        width: 80%;
+        width: 70%;
         border-radius: 14px;
         overflow: hidden;
         @include dispFlex(space-between,stretch,column);
@@ -398,10 +398,13 @@ main {
         &__picture {
 
             @include dispFlex(center,center,row);
-            padding: 4em 1em;
+            overflow: hidden;
+            padding: 3em 1em;
+            max-height: 16em;
 
             img {
-                width: 14em
+                width: 16em;
+                object-fit: cover;
             }
         }
 
@@ -419,7 +422,6 @@ main {
 
     .teamTree {
         position: relative;
-        min-height: 35em;
 
         &__member {
             position: absolute;
@@ -427,7 +429,6 @@ main {
         }
 
         &__background {
-            position: absolute;
             width: 100%;
             height: 100%;
 
@@ -450,4 +451,18 @@ main {
 
 #operar {
     @include dispFlex(space-around,center,column);
+
+
+}
+
+#proyecto {
+    .sectionContent__right {
+
+        flex-basis: 40%;
+
+    }
+    .sectionContent__left {
+
+    @include dispFlex(space-around,center,row);
+    }
 }

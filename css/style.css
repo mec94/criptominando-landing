@@ -514,9 +514,9 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -569,7 +569,7 @@ main {
 
 .sectionContent .teamCard {
   border: 2px solid #FF7A00;
-  width: 80%;
+  width: 70%;
   border-radius: 14px;
   overflow: hidden;
   display: -webkit-box;
@@ -646,11 +646,15 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 4em 1em;
+  overflow: hidden;
+  padding: 3em 1em;
+  max-height: 16em;
 }
 
 .sectionContent .teamCard__picture img {
-  width: 14em;
+  width: 16em;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .sectionContent .teamCard__content {
@@ -678,7 +682,6 @@ main {
 
 .sectionContent .teamTree {
   position: relative;
-  min-height: 35em;
 }
 
 .sectionContent .teamTree__member {
@@ -687,7 +690,6 @@ main {
 }
 
 .sectionContent .teamTree__background {
-  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -715,6 +717,26 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#proyecto .sectionContent__right {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+}
+
+#proyecto .sectionContent__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
