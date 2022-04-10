@@ -445,6 +445,7 @@ main {
 }
 
 .sectionContent__steps-bar .bar-item {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -459,7 +460,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 12em;
-  padding: .5em .5em 0;
+  padding: 1.2em .5em 0;
   cursor: pointer;
   -webkit-transition: color .4s linear;
   transition: color .4s linear;
@@ -474,15 +475,59 @@ main {
 }
 
 .sectionContent__steps-bar .bar-item .itemStop {
-  z-index: -1;
+  z-index: 1;
   margin-top: .3em;
   width: .3em;
   height: 1.3em;
   background-color: #FFFFFF;
 }
 
-.sectionContent__steps-bar .bar-item.active {
+.sectionContent__steps-bar .bar-item .itemBackground {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
   background-color: #FF7A00;
+  -webkit-transform: scale(1, 0);
+          transform: scale(1, 0);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+@-webkit-keyframes animateBackground {
+  0% {
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(1, 0.9);
+            transform: scale(1, 0.9);
+  }
+}
+
+@keyframes animateBackground {
+  0% {
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(1, 0.9);
+            transform: scale(1, 0.9);
+  }
+}
+
+.sectionContent__steps-bar .bar-item .itemBackground.active {
+  -webkit-animation: animateBackground .7s ease-in-out forwards;
+          animation: animateBackground .7s ease-in-out forwards;
 }
 
 .sectionContent__bar {
@@ -568,10 +613,8 @@ main {
 }
 
 .sectionContent .teamCard {
-  border: 2px solid #FF7A00;
   width: 70%;
-  border-radius: 14px;
-  overflow: hidden;
+  height: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -585,6 +628,54 @@ main {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.sectionContent .teamCard__Flip {
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform 1.5s ease-out;
+  transition: -webkit-transform 1.5s ease-out;
+  transition: transform 1.5s ease-out;
+  transition: transform 1.5s ease-out, -webkit-transform 1.5s ease-out;
+}
+
+.sectionContent .teamCard__Flip.active {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.sectionContent .teamCard__Side {
+  position: absolute;
+  overflow: hidden;
+  border: 2px solid #FF7A00;
+  border-radius: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionContent .teamCard--back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 .sectionContent .teamCard__top {
@@ -647,12 +738,11 @@ main {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
-  padding: 3em 1em;
-  max-height: 16em;
+  padding: 0 2em;
 }
 
 .sectionContent .teamCard__picture img {
-  width: 16em;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -728,6 +818,7 @@ main {
 }
 
 #proyecto .sectionContent__left {
+  height: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -737,8 +828,40 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 1em 2em;
+  height: 10vh;
+  background-color: #FF7A00;
+}
+
+footer p {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+footer a {
+  color: #FFFFFF;
+  font-size: 1.2em;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=style.css.map */

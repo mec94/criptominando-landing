@@ -257,9 +257,10 @@ main {
         };
 
         .bar-item {
+            position: relative;
             @include dispFlex(space-between,center,column);
             width: 12em;
-            padding: .5em .5em 0;
+            padding: 1.2em .5em 0;
             cursor: pointer;
             transition: color .4s linear;
             z-index: 10;
@@ -272,15 +273,38 @@ main {
             }
 
             .itemStop {
-                z-index: -1;
+                z-index: 1;
                 margin-top: .3em;
                 width: .3em;
                 height: 1.3em;
                 background-color: $white;
             }
 
-            &.active {
-                background-color: $brightOrange
+            .itemBackground {
+                position: absolute;
+                bottom: 0;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                background-color: $brightOrange;
+                transform: scale(1,0);
+                transform-origin: bottom;
+            }
+
+            @keyframes animateBackground {
+                0% {
+                    transform: scale(1,0);
+                }
+                50% {
+                    transform: scale(1,1)
+                }
+                100% {
+                    transform: scale(1,.9);
+                }
+            }
+
+            .itemBackground.active {
+                animation: animateBackground .7s ease-in-out forwards;
             }
         };
     }
@@ -345,11 +369,38 @@ main {
     }
 
     .teamCard {
-        border: 2px solid $brightOrange;
+
         width: 70%;
-        border-radius: 14px;
-        overflow: hidden;
+        height: 90%;
         @include dispFlex(space-between,stretch,column);
+        perspective: 1000px;
+
+        &__Flip {
+            position: relative;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+            transition: transform 1.5s ease-out;
+        }
+
+        &__Flip.active {
+            transform: rotateY(180deg);
+        }
+
+        &__Side {
+            position: absolute;
+            overflow: hidden;
+            border: 2px solid $brightOrange;
+            border-radius: 14px;
+            @include dispFlex(space-between,stretch,column);
+            backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+        }
 
         &__top {
             
@@ -399,11 +450,11 @@ main {
 
             @include dispFlex(center,center,row);
             overflow: hidden;
-            padding: 3em 1em;
-            max-height: 16em;
+            padding: 0 2em;
 
             img {
-                width: 16em;
+                height: 100%;
+              
                 object-fit: cover;
             }
         }
@@ -451,18 +502,38 @@ main {
 
 #operar {
     @include dispFlex(space-around,center,column);
-
-
 }
 
 #proyecto {
+
     .sectionContent__right {
 
         flex-basis: 40%;
-
     }
-    .sectionContent__left {
 
-    @include dispFlex(space-around,center,row);
+    .sectionContent__left {
+        height: 80%;
+        @include dispFlex(space-around,stretch,row);
+    }
+}
+
+
+footer {
+    @include dispFlex(space-between, center, row)
+    padding: 1em 2em;
+    height: 10vh;
+    background-color: $brightOrange;
+
+    p {
+        font-size: 1.2em;
+        text-transform: uppercase;
+        color: $white;
+        font-weight: 500;
+    }
+
+    a {
+        color: $white;
+        font-size: 1.2em;
+        text-transform: uppercase;
     }
 }

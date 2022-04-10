@@ -1,73 +1,86 @@
+/*eslint-disable*/
 
 const sectionFirstSteps = document.getElementById('operar'); 
 
 const teamTree = document.querySelector('.teamTree');
 const teamCard = document.querySelector('.teamCard');
 
-
 const firstStepsBar = sectionFirstSteps.querySelectorAll('.bar-item')
+
+// Section 'First Steps'
 
 firstStepsBar.forEach( (item,index) => {
 
     item.addEventListener('click', () => {
 
+        //Remove previous existing active classes
+
         if (sectionFirstSteps.querySelector('.active')) {
             sectionFirstSteps.querySelector('.active').classList.remove('active')
         }
-        
-        firstStepsBar[index].classList.add('active');
 
-        showBarItem(index);
+        //Add active class to bar item
+
+        firstStepsBar[index].lastElementChild.classList.add('active');
+
+        setBarItemContent(index);
     })
 })
 
-var listItems = []
-var ul = sectionFirstSteps.children[2].lastElementChild;
+// Set bar item title, image, list items
 
-function showBarItem(itemIndex) {
+function setBarItemContent(itemIndex) {
+
     let barItemTitle = 
         ['Chat Disponible',
         'Pedir Cotización',
         'Invertir en Pools',
         'Recomiendanos'];
     let barItemImage = 
-        ['../img/iconChat.svg',
-        '../img/iconHashpower.svg',
-        '../img/iconGPUMining.svg',
-        '../img/iconRewards.svg'];
+        ['./img/iconChat.svg',
+        './img/iconHashpower.svg',
+        './img/iconGPUMining.svg',
+        './img/iconRewards.svg'];
+
+    //Replace content w/ array's one to selected bar item
+
+    sectionFirstSteps.children[2].firstElementChild.children[0].src = barItemImage[itemIndex];
+    sectionFirstSteps.children[2].firstElementChild.children[1].textContent = barItemTitle[itemIndex];
+
+    let listItems = new Array();
 
     listItems.push(['Inicia un chat con nosotros', 'Aclara tus dudas y consulta sobre el servicio'])
     listItems.push(['Informate de la cotización diaria', 'Asesoramiento personalizado sobre opciones de inversión'])
     listItems.push(['Acercate a las oficinas de CriptoSpot', 'Invierte con una empresa de confianza']);
     listItems.push(['Sumate al programa de afiliados', 'Recibe comisiones por hasta 5 niveles de referido']);
-    
-
 
     createListItems(itemIndex)
 
     function createListItems(item) {
+
+        let ul = sectionFirstSteps.children[2].lastElementChild;
             
         while (ul.lastElementChild) {
             ul.removeChild(ul.lastElementChild);
         }
         
             for (i=0; i < listItems[item].length; i++) {
-
+    
                 let listItem = document.createElement('li');
                 listItem.textContent = listItems[item][i];
-
+    
                 ul.appendChild(listItem);
-
+    
             }
-
+    
     }
-
-    sectionFirstSteps.children[2].firstElementChild.children[0].src = barItemImage[itemIndex];
-
-    sectionFirstSteps.children[2].firstElementChild.children[1].textContent = barItemTitle[itemIndex];
-
-    //sectionFirstSteps.children[2].lastElementChild.children[0].textContent
 }
+
+
+// Section Partners & Team
+
+
+// Interactive circle click detection
 
 const teamCircleImage = teamTree.querySelector('svg').querySelectorAll('image');
 
@@ -77,22 +90,69 @@ const teamCircleImage = teamTree.querySelector('svg').querySelectorAll('image');
 
             let teamItemCircle = teamTree.querySelector('svg').querySelectorAll('circle');
 
+            //Remove previous active classes before adding one to item
+
             if (teamTree.querySelector('.active')) {
                 teamTree.querySelector('.active').classList.remove('active');
             }
 
             teamItemCircle[index].classList.add('active');
+
             showCard(index);
         })
     })
 
+// Replace contents from flipCards depending on side & flip
+
 function showCard(circleIndex) {
+
     let imageSource = teamCircleImage[circleIndex].getAttribute('xlink:href');
 
     let crewMemberTitle = 
-        ['Sobre Partner 1', 'Sobre Partner 2', 'Sobre Partner 3',
-        'Sobre Partner 4', 'Sobre Partner 5', 'Sobre Partner 6'];
+        ['Facundo', 'Mijail', 'Matias',
+        'Lucia', 'Lucas L', 'Lucas R'];
 
-    teamCard.children[0].firstElementChild.textContent = crewMemberTitle[circleIndex];
-    teamCard.children[1].firstElementChild.src = imageSource;
+    flipCard()
+    replaceCardContent()
+
+    function flipCard() {
+        teamCard.firstElementChild.classList.toggle('active');
+    }
+    
+    function replaceCardContent() {
+
+        let teamCardFront = teamCard.querySelector('.teamCard--front');
+        let teamCardBack =  teamCard.querySelector('.teamCard--back');
+
+        //Determine if card is flipped & replace back or front content
+
+        if (teamCard.firstElementChild.classList.contains('active')) {
+
+        teamCardBack.children[0].firstElementChild.textContent =
+            crewMemberTitle[circleIndex];
+        teamCardBack.children[1].firstElementChild.src =
+            imageSource
+
+        }
+
+        else {
+
+        teamCardFront.children[0].firstElementChild.textContent =
+            crewMemberTitle[circleIndex];
+        teamCardFront.children[1].firstElementChild.src =
+            imageSource
+
+        }
+        
+    }
+    
 }
+
+// Get Current Year value with WordClockApi 
+
+var footerCopy = document.getElementById('footerCopyright');
+
+var currentYear =
+    fetch('http://worldclockapi.com/api/json/utc/now')
+    .then(data => data.json())
+    .then(d => footerCopy.textContent = `${(new Date(d.currentDateTime).getFullYear())} © Criptominando`)
