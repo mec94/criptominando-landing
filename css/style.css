@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 :root {
-  --backgroundClr: #FFFFFF;
+  --backgroundClr: rgba(255,255,255,1);
   --brightOrange: #FF7A00;
   --mediumOrange: #E46E00;
   --darkOrange: #e36619;
@@ -12,7 +12,7 @@
 }
 
 .darkMode {
-  --backgroundClr: #000000;
+  --backgroundClr: rgba(0,0,0,.85);
   --brightOrange: #FF7A00;
   --mediumOrange: #E46E00;
   --darkOrange: #e36619;
@@ -434,9 +434,11 @@ header .rightNav ul li:last-child {
 }
 
 main {
-  -webkit-transition: background-color .2s ease-in;
-  transition: background-color .2s ease-in;
+  -webkit-transition: background-color .2s ease-in, background .2s ease-in;
+  transition: background-color .2s ease-in, background .2s ease-in;
+  background: none;
   background-color: var(--backgroundClr);
+  background-blend-mode: multiply;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -1113,6 +1115,12 @@ main {
   -webkit-clip-path: circle(40% at 50% 50%);
           clip-path: circle(40% at 50% 50%);
   cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  #home .sectionContent__right {
+    display: none;
+  }
 }
 
 #operar {

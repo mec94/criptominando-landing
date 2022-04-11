@@ -188,9 +188,10 @@ header {
 // Main
 
 main {
-    //background: url('../img/background.jpg');
-    transition: background-color .2s ease-in;
+    transition: background-color .2s ease-in, background .2s ease-in;
+    background: none;
     background-color: var(--backgroundClr);
+    background-blend-mode: multiply;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -646,6 +647,16 @@ main {
                 clip-path: circle(40% at 50% 50%);
                 cursor: pointer;
             }
+        }
+    }
+}
+
+//Content Sections - Specific Adjusts
+
+#home {
+    @media screen and (max-width: 800px) {
+        .sectionContent__right {
+            display: none;
         }
     }
 }

@@ -169,10 +169,13 @@ var currentYear =
 // Dark Mode Toggle
 
 const darkModeToggle = document.getElementById('darkModeCheckbox');
+const mainHTML = document.querySelector('main');
+const backgroundLocation = "url('../img/backgroundcrypto2.jpeg')";
 
 if (localStorage.getItem('darkMode') == 'on') {
     document.body.classList.toggle('darkMode')
     darkModeToggle.checked = true;
+    setBackground(backgroundLocation,200);
 }
 
 darkModeToggle.addEventListener('click', () => {
@@ -180,13 +183,21 @@ darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('darkMode')
 
     if (document.body.classList.contains('darkMode')) {
-        localStorage.setItem('darkMode', 'on')
+        localStorage.setItem('darkMode', 'on');
+        setBackground(backgroundLocation,200);
     }
     else {
         localStorage.setItem('darkMode', 'off')
+        setBackground('none',0);
     }
 
 })
+
+function setBackground(location,timing) {
+    setTimeout(() => {
+    mainHTML.style.backgroundImage = location;
+    },timing)
+}
 
 // Hamburguer Menu - Mobile Only
 

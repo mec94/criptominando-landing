@@ -6,7 +6,7 @@ $black: #282828;
 $darkGray: #645F5B;
 
 :root {
-    --backgroundClr: #FFFFFF;
+    --backgroundClr: rgba(255,255,255,1);
     --brightOrange: #FF7A00;
     --mediumOrange: #E46E00;
     --darkOrange: #e36619;
@@ -18,7 +18,7 @@ $darkGray: #645F5B;
 }
 
 .darkMode {
-    --backgroundClr: #000000;
+    --backgroundClr: rgba(0,0,0,.85);
     --brightOrange: #FF7A00;
     --mediumOrange: #E46E00;
     --darkOrange: #e36619;
