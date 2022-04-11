@@ -379,6 +379,7 @@ main {
         width: 70%;
         @include dispFlex(space-between,stretch,column);
         perspective: 1000px;
+        z-index: 150;
 
         &__Flip {
             position: relative;
