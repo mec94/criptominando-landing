@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
+:root {
+  --backgroundClr: #FFFFFF;
+  --brightOrange: #FF7A00;
+  --mediumOrange: #E46E00;
+  --darkOrange: #e36619;
+  --white: #414141;
+  --whiteOpacity: rgba(66, 66, 66, .9);
+  --black: #282828;
+  --darkGray: #645F5B;
+  --darkGrayOpacity: rgba(100, 95, 91, .2);
+}
+
+.darkMode {
+  --backgroundClr: #000000;
+  --brightOrange: #FF7A00;
+  --mediumOrange: #E46E00;
+  --darkOrange: #e36619;
+  --white: #FFFFFF;
+  --whiteOpacity: rgba(255,255,255,.7);
+  --black: #282828;
+  --darkGray: #645F5B;
+  --darkGrayOpacity: rgba(100, 95, 91, .2);
+}
+
 img {
   max-width: 100%;
 }
@@ -11,11 +35,11 @@ a {
   position: relative;
   z-index: 1;
   text-transform: uppercase;
-  font-size: 1.2em;
-  font-weight: 400;
-  color: #FFFFFF;
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--white);
   padding: .4em 1.4em;
-  background-color: #FF7A00;
+  background-color: var(--brightOrange);
 }
 
 .button + .button {
@@ -23,8 +47,8 @@ a {
 }
 
 .button:hover::before {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
 }
 
 .button::before {
@@ -32,10 +56,11 @@ a {
   z-index: -1;
   content: "";
   width: 100%;
-  height: 99%;
-  bottom: 0;
+  height: 100%;
+  top: 0;
   left: 0;
-  background-color: #e36619;
+  right: 0;
+  background-color: var(--darkOrange);
   -webkit-transform: scale(1, 0);
           transform: scale(1, 0);
   -webkit-transition: -webkit-transform 0.3s ease-out;
@@ -46,11 +71,55 @@ a {
           transform-origin: bottom;
 }
 
-/* Main */
-header {
+#darkModeToggle {
   position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 5vh;
+  height: 5vh;
+  z-index: 10;
+}
+
+#darkModeToggle input {
+  position: absolute;
+  left: -5%;
+  top: -5%;
+  opacity: 0;
   width: 100%;
-  height: 8vh;
+  height: 100%;
+  cursor: pointer;
+}
+
+#darkModeToggle #darkModeIcon {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  border: 3px solid var(--black);
+  width: 100%;
+  height: 100%;
+}
+
+#darkModeToggle #darkModeIcon::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+}
+
+#darkModeToggle input:checked ~ #darkModeIcon {
+  border: 3px solid var(--white);
+}
+
+#darkModeToggle input:checked ~ #darkModeIcon::before {
+  background-color: var(--white);
+}
+
+header {
+  position: absolute;
+  width: 100%;
   z-index: 100;
 }
 
@@ -71,7 +140,9 @@ header nav {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  background-color: #FF7A00;
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+  background-color: var(--backgroundClr);
 }
 
 header nav ul {
@@ -81,6 +152,7 @@ header nav ul {
 header nav ul li {
   position: relative;
   overflow: hidden;
+  font-size: 1.2em;
   height: 100%;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -104,7 +176,7 @@ header nav ul li::before {
   width: 100%;
   height: 100%;
   top: 0;
-  background-color: #E46E00;
+  background-color: var(--brightOrange);
   -webkit-transform: scale(1, 0);
           transform: scale(1, 0);
   -webkit-transition: -webkit-transform 0.3s ease-in;
@@ -121,7 +193,7 @@ header nav ul li::after {
   bottom: 0;
   width: 100%;
   height: 3px;
-  background-color: #282828;
+  background-color: var(--white);
   -webkit-transform: scale(0, 1);
           transform: scale(0, 1);
   -webkit-transition: -webkit-transform 0.3s ease-out;
@@ -149,7 +221,7 @@ header nav ul a {
   text-transform: uppercase;
   text-align: left;
   padding: .5em 1.2em;
-  color: #FFFFFF;
+  color: var(--white);
   letter-spacing: .2px;
   font-weight: 600;
   height: 100%;
@@ -170,8 +242,8 @@ header .leftNav {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 1em;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
+  -ms-flex-preferred-size: 95%;
+      flex-basis: 95%;
   height: 100%;
 }
 
@@ -204,8 +276,8 @@ header .leftNav ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 header .rightNav {
@@ -221,11 +293,10 @@ header .rightNav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-preferred-size: 18%;
-      flex-basis: 18%;
-  padding: .5em 1em;
+  padding: .5em;
+  -ms-flex-preferred-size: 5%;
+      flex-basis: 5%;
   height: 100%;
-  background-color: #E46E00;
 }
 
 header .rightNav ul {
@@ -256,7 +327,9 @@ header .rightNav ul li:last-child {
 }
 
 main {
-  background: url("../img/background.jpg");
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+  background-color: var(--backgroundClr);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -275,7 +348,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   padding: 1em;
-  height: 95vh;
+  height: 100vh;
 }
 
 .sectionContent__left {
@@ -284,22 +357,22 @@ main {
 }
 
 .sectionContent__left h2 {
-  font-size: 3.2em;
+  font-size: 4em;
   font-weight: 600;
   letter-spacing: .5px;
   line-height: 1.1;
-  color: #FFFFFF;
+  color: var(--white);
 }
 
 .sectionContent__left h2 b {
-  color: #FF7A00;
+  color: var(--brightOrange);
 }
 
 .sectionContent__left p {
   margin-top: .8em;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 300;
-  font-size: 1.7em;
+  color: var(--whiteOpacity);
+  font-weight: 400;
+  font-size: 2em;
   max-width: 80%;
 }
 
@@ -329,8 +402,9 @@ main {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  border: 2px solid #FF7A00;
+  border: 2px solid var(--brightOrange);
   height: 100%;
+  overflow: hidden;
 }
 
 .sectionContent__whyus div {
@@ -350,20 +424,21 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 20px solid #FF7A00;
+  border-bottom: 20px solid var(--brightOrange);
 }
 
 .sectionContent__whyus div h3 {
-  color: #FFFFFF;
+  color: var(--white);
   margin-left: .8em;
-  font-size: 1.5em;
+  font-size: 1.7em;
+  font-weight: 600;
   text-transform: uppercase;
-  color: #FF7A00;
+  color: var(--brightOrange);
 }
 
 .sectionContent__whyus div img {
   position: absolute;
-  right: 0;
+  right: -2em;
   height: 100%;
 }
 
@@ -383,12 +458,13 @@ main {
           align-items: flex-start;
   padding: 1em 2em;
   list-style: decimal;
-  color: #FFFFFF;
-  font-size: 1.3em;
+  color: var(--white);
+  font-size: 1.6em;
+  font-weight: 500;
 }
 
 .sectionContent__whyus ol li {
-  line-height: 2;
+  line-height: 1.8;
 }
 
 .sectionContent__top h4 {
@@ -396,16 +472,16 @@ main {
   left: -4em;
   font-size: 1.2em;
   text-transform: uppercase;
-  color: #FF7A00;
-  font-weight: 500;
+  color: var(--brightOrange);
+  font-weight: 600;
 }
 
 .sectionContent__top h3 {
   position: relative;
   margin-top: .4em;
   font-size: 3em;
-  font-weight: 500;
-  color: #FFFFFF;
+  font-weight: 600;
+  color: var(--white);
 }
 
 .sectionContent__top h3::before {
@@ -441,7 +517,7 @@ main {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  color: #FFFFFF;
+  color: var(--white);
 }
 
 .sectionContent__steps-bar .bar-item {
@@ -471,15 +547,15 @@ main {
   text-transform: uppercase;
   text-align: center;
   font-size: 1.2em;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .sectionContent__steps-bar .bar-item .itemStop {
   z-index: 1;
-  margin-top: .3em;
+  margin-top: .2em;
   width: .3em;
   height: 1.3em;
-  background-color: #FFFFFF;
+  background-color: var(--white);
 }
 
 .sectionContent__steps-bar .bar-item .itemBackground {
@@ -488,7 +564,7 @@ main {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-color: #FF7A00;
+  background-color: var(--brightOrange);
   -webkit-transform: scale(1, 0);
           transform: scale(1, 0);
   -webkit-transform-origin: bottom;
@@ -534,16 +610,16 @@ main {
   height: .4em;
   border-radius: 10px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: var(--white);
 }
 
 .sectionContent__selectedBarItem {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -551,8 +627,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 60%;
-  min-height: 20%;
+  width: 70%;
 }
 
 .sectionContent__selectedBarItem div {
@@ -569,8 +644,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  margin-right: 3em;
 }
 
 .sectionContent__selectedBarItem div > * + * {
@@ -585,19 +659,15 @@ main {
   font-size: 2em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #FFFFFF;
-}
-
-.sectionContent__selectedBarItem ul {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
+  color: var(--white);
 }
 
 .sectionContent__selectedBarItem ul li {
   position: relative;
-  color: #FFFFFF;
+  color: var(--white);
   line-height: 2;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  font-weight: 500;
 }
 
 .sectionContent__selectedBarItem ul li::before {
@@ -609,12 +679,11 @@ main {
   height: .3em;
   background-color: transparent;
   border-radius: 50%;
-  border: 5px solid #FF7A00;
+  border: 5px solid var(--brightOrange);
 }
 
 .sectionContent .teamCard {
   width: 70%;
-  height: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -652,7 +721,7 @@ main {
 .sectionContent .teamCard__Side {
   position: absolute;
   overflow: hidden;
-  border: 2px solid #FF7A00;
+  border: 2px solid var(--brightOrange);
   border-radius: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -681,14 +750,14 @@ main {
 .sectionContent .teamCard__top {
   position: relative;
   padding: 1em 1.5em;
-  background-color: #FF7A00;
+  background-color: var(--brightOrange);
 }
 
 .sectionContent .teamCard__top h3 {
   font-size: 2em;
-  color: #FFFFFF;
+  color: var(--white);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .sectionContent .teamCard__top div {
@@ -696,7 +765,7 @@ main {
   z-index: 10;
   right: 0;
   top: 0;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   height: 100%;
   width: 30%;
 }
@@ -708,7 +777,7 @@ main {
   top: 0;
   width: 3em;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   z-index: -1;
   -webkit-transform: skew(-16deg);
           transform: skew(-16deg);
@@ -762,7 +831,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   padding: 2em 1em;
-  background-color: rgba(100, 95, 91, 0.2);
+  background-color: var(--darkGrayOpacity);
 }
 
 .sectionContent .teamCard__content p {
@@ -785,8 +854,8 @@ main {
 }
 
 .sectionContent .teamTree__background svg circle.active {
-  -webkit-filter: drop-shadow(0 0 10px #FF7A00);
-          filter: drop-shadow(0 0 10px #FF7A00);
+  -webkit-filter: drop-shadow(0 0 10px var(--brightOrange));
+          filter: drop-shadow(0 0 10px var(--brightOrange));
 }
 
 .sectionContent .teamTree__background svg image {
@@ -847,21 +916,29 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1em 2em;
-  height: 10vh;
-  background-color: #FF7A00;
+  background-color: var(--brightOrange);
+}
+
+footer .footer__left {
+  padding: 1.2em 2em;
+}
+
+footer .footer__right {
+  padding: 1.2em 2em;
+  background-color: var(--darkOrange);
 }
 
 footer p {
   font-size: 1.2em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--white);
   font-weight: 500;
 }
 
 footer a {
-  color: #FFFFFF;
+  color: var(--white);
   font-size: 1.2em;
   text-transform: uppercase;
+  font-weight: 600;
 }
 /*# sourceMappingURL=style.css.map */

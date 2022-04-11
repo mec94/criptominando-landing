@@ -2,22 +2,23 @@
 @import './variables';
 @import './mixins';
 @import './general-styles';
-/* Main */
+
+
+// Header
 
 header {
 
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: 8vh;
     z-index: 100;
 
     nav {
-        
         position: fixed;
         height: 8vh;
         width: 100%;
         @include dispFlex(space-between,flex-start,row);
-        background-color: $brightOrange;
+        transition: background-color .2s ease-in;
+        background-color: var(--backgroundClr);
 
         ul {
             height: 100%;
@@ -26,6 +27,7 @@ header {
         ul li {
             position: relative;
             overflow: hidden;
+            font-size: 1.2em;
             height: 100%;
             flex-shrink: 0;
             z-index: 1;
@@ -46,7 +48,7 @@ header {
             width: 100%;
             height: 100%;
             top: 0;
-            background-color: $mediumOrange;
+            background-color: var(--brightOrange);
             @include transformScale(1,0,ease-in,bottom)
         }
 
@@ -56,7 +58,7 @@ header {
             bottom: 0;
             width: 100%;
             height: 3px;
-            background-color: $black;
+            background-color: var(--white);
             @include transformScale(0,1,ease-out,center)
         }
     
@@ -65,7 +67,7 @@ header {
             text-transform: uppercase;
             text-align: left;
             padding: .5em 1.2em;
-            color: $white;
+            color: var(--white);
             letter-spacing: .2px;
             font-weight: 600;
             height: 100%;
@@ -76,7 +78,7 @@ header {
 
         @include dispFlex(space-between,center,row);
         padding: 0 1em;
-        flex-basis: 100%;
+        flex-basis: 95%;
         height: 100%;
 
         #logoContainer {
@@ -95,17 +97,15 @@ header {
 
         ul {
             @include dispFlex(space-around,center,row);
-            flex-basis: 40%;
+            flex-basis: 50%;
         }
     }
 
     .rightNav {
         @include dispFlex(space-around,center,row );
-
-        flex-basis: 18%;
-        padding: .5em 1em;
+        padding: .5em;
+        flex-basis: 5%;
         height: 100%;
-        background-color: $mediumOrange;
 
         ul {
             @include dispFlex(flex-end,center,row);
@@ -120,11 +120,16 @@ header {
             border-left: 2px solid white;
             padding-left: 1.5em;
         }
+
     }
 }
 
+// Main
+
 main {
-    background: url('../img/background.jpg');
+    //background: url('../img/background.jpg');
+    transition: background-color .2s ease-in;
+    background-color: var(--backgroundClr);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -133,29 +138,29 @@ main {
 
     @include dispFlex(space-around,center,row);
     padding: 1em;
-    height: 95vh;
+    height: 100vh;
 
     &__left {
 
         flex-basis: 45%;
 
         h2 {
-            font-size: 3.2em;
+            font-size: 4em;
             font-weight: 600;
             letter-spacing: .5px;
             line-height: 1.1;
-            color: $white;
+            color: var(--white);
 
             b {
-                color: $brightOrange;
+                color: var(--brightOrange);
             }
         }
         
         p {
             margin-top: .8em;
-            color: rgba($white, .7);
-            font-weight: 300;
-            font-size: 1.7em;
+            color: var(--whiteOpacity);
+            font-weight: 400;
+            font-size: 2em;
             max-width: 80%;
         }
     }
@@ -173,27 +178,29 @@ main {
 
     &__whyus {
         @include dispFlex(center,flex-start,column);
-        border: 2px solid $brightOrange;
+        border: 2px solid var(--brightOrange);
         height: 100%;
+        overflow: hidden;
 
         div {
             position: relative;
             width: 100%;
             padding: 1em;
             @include dispFlex(space-between,center,row);
-            border-bottom: 20px solid $brightOrange;
+            border-bottom: 20px solid var(--brightOrange);
 
             h3 {
-                color: $white;
+                color: var(--white);
                 margin-left: .8em;
-                font-size: 1.5em;
+                font-size: 1.7em;
+                font-weight: 600;
                 text-transform: uppercase;
-                color: $brightOrange
+                color: var(--brightOrange)
             }
 
             img {
                 position: absolute;
-                right: 0;
+                right: -2em;
                 height: 100%;
             }
         }
@@ -202,11 +209,12 @@ main {
             @include dispFlex(center,flex-start,column);
             padding: 1em 2em;
             list-style: decimal;
-            color: $white;
-            font-size: 1.3em;
+            color: var(--white);
+            font-size: 1.6em;
+            font-weight: 500;
 
             li {
-                line-height: 2;
+                line-height: 1.8;
             }
         }
     }
@@ -218,16 +226,16 @@ main {
             left: -4em;
             font-size: 1.2em;
             text-transform: uppercase;
-            color: $brightOrange;
-            font-weight: 500;
+            color: var(--brightOrange);
+            font-weight: 600;
         }
         
         h3 {
             position: relative;
             margin-top: .4em;
             font-size: 3em;
-            font-weight: 500;
-            color: $white;
+            font-weight: 600;
+            color: var(--white);
 
             &::before {
                 content: "";
@@ -253,7 +261,7 @@ main {
             bottom: 100%;
             width: 100%;
             @include dispFlex(space-around,stretch,row);
-            color: $white;
+            color: var(--white);
         };
 
         .bar-item {
@@ -269,15 +277,15 @@ main {
                 text-transform: uppercase;
                 text-align: center;
                 font-size: 1.2em;
-                font-weight: 400
+                font-weight: 500
             }
 
             .itemStop {
                 z-index: 1;
-                margin-top: .3em;
+                margin-top: .2em;
                 width: .3em;
                 height: 1.3em;
-                background-color: $white;
+                background-color: var(--white);
             }
 
             .itemBackground {
@@ -286,7 +294,7 @@ main {
                 z-index: -1;
                 width: 100%;
                 height: 100%;
-                background-color: $brightOrange;
+                background-color: var(--brightOrange);
                 transform: scale(1,0);
                 transform-origin: bottom;
             }
@@ -313,18 +321,17 @@ main {
         height: .4em;
         border-radius: 10px;
         width: 100%;
-        background-color: $white;
+        background-color: var(--white);
     }
 
     &__selectedBarItem {
-        @include dispFlex(space-between,center,row);
-        width: 60%;
-        min-height: 20%;
+        @include dispFlex(space-evenly,center,row);
+        width: 70%;
 
         div {
 
             @include dispFlex(flex-start,center,row);
-            flex-basis: 40%;
+            margin-right: 3em;
 
             & > * + * {
                 margin-left: .7em
@@ -338,20 +345,19 @@ main {
                 font-size: 2em;
                 text-transform: uppercase;
                 font-weight: 600;
-                color: $white;
+                color: var(--white);
             }
 
         }
 
         ul {
 
-            flex-basis: 50%;
-
             li {
                 position: relative;
-                color: $white;
+                color: var(--white);
                 line-height: 2;
-                font-size: 1.3em;
+                font-size: 1.4em;
+                font-weight: 500;
 
                 &::before {
                     position: absolute;
@@ -362,7 +368,7 @@ main {
                     height: .3em;
                     background-color: transparent;
                     border-radius: 50%;
-                    border: 5px solid $brightOrange;
+                    border: 5px solid var(--brightOrange);
                 }
             }
         }
@@ -371,7 +377,6 @@ main {
     .teamCard {
 
         width: 70%;
-        height: 90%;
         @include dispFlex(space-between,stretch,column);
         perspective: 1000px;
 
@@ -390,7 +395,7 @@ main {
         &__Side {
             position: absolute;
             overflow: hidden;
-            border: 2px solid $brightOrange;
+            border: 2px solid var(--brightOrange);
             border-radius: 14px;
             @include dispFlex(space-between,stretch,column);
             backface-visibility: hidden;
@@ -406,13 +411,13 @@ main {
             
             position: relative;
             padding: 1em 1.5em;
-            background-color: $brightOrange;
+            background-color: var(--brightOrange);
 
             h3 {
                 font-size: 2em;
-                color: $white;
+                color: var(--white);
                 text-transform: uppercase;
-                font-weight: 500;
+                font-weight: 600;
             }
 
             div {
@@ -420,7 +425,7 @@ main {
                 z-index: 10;
                 right: 0;
                 top: 0;
-                background-color: $white;
+                background-color: var(--white);
                 height: 100%;
                 width: 30%;
 
@@ -431,7 +436,7 @@ main {
                     top: 0;
                     width: 3em;
                     height: 100%;
-                    background-color: $white;
+                    background-color: var(--white);
                     z-index: -1;
                     transform: skew(-16deg);
                 }
@@ -462,7 +467,7 @@ main {
         &__content {
             @include dispFlex(center,center,row);
             padding: 2em 1em;
-            background-color: rgba($darkGray, .2);
+            background-color: var(--darkGrayOpacity);
 
             p {
                 margin-top: 0;
@@ -483,11 +488,8 @@ main {
             width: 100%;
             height: 100%;
 
-            svg circle {
-            }
-
             svg circle.active {
-                filter: drop-shadow(0 0 10px $brightOrange);
+                filter: drop-shadow(0 0 10px var(--brightOrange));
             }
 
             svg image {
@@ -517,23 +519,33 @@ main {
     }
 }
 
+// Footer
+
 
 footer {
-    @include dispFlex(space-between, center, row)
-    padding: 1em 2em;
-    height: 10vh;
-    background-color: $brightOrange;
+    @include dispFlex(space-between, center, row);
+    background-color: var(--brightOrange);
+
+    .footer__left {
+        padding: 1.2em 2em;
+    }
+
+    .footer__right {
+        padding: 1.2em 2em;
+        background-color: var(--darkOrange);
+    }
 
     p {
         font-size: 1.2em;
         text-transform: uppercase;
-        color: $white;
-        font-weight: 500;
+        color: var(--white);
+        font-weight: 500
     }
 
     a {
-        color: $white;
+        color: var(--white);
         font-size: 1.2em;
         text-transform: uppercase;
+        font-weight: 600;
     }
 }

@@ -42,7 +42,7 @@ function setBarItemContent(itemIndex) {
         './img/iconGPUMining.svg',
         './img/iconRewards.svg'];
 
-    //Replace content w/ array's one to selected bar item
+    // Replace content w/ array's one
 
     sectionFirstSteps.children[2].firstElementChild.children[0].src = barItemImage[itemIndex];
     sectionFirstSteps.children[2].firstElementChild.children[1].textContent = barItemTitle[itemIndex];
@@ -59,10 +59,14 @@ function setBarItemContent(itemIndex) {
     function createListItems(item) {
 
         let ul = sectionFirstSteps.children[2].lastElementChild;
+
+        // Remove previous existing LI childs from UL
             
         while (ul.lastElementChild) {
             ul.removeChild(ul.lastElementChild);
         }
+
+        // & append selection
         
             for (i=0; i < listItems[item].length; i++) {
     
@@ -86,15 +90,19 @@ const teamCircleImage = teamTree.querySelector('svg').querySelectorAll('image');
 
     teamCircleImage.forEach( (el, index) => {
 
+        // Add click event for each circle
+
         el.addEventListener('click', () => {
 
             let teamItemCircle = teamTree.querySelector('svg').querySelectorAll('circle');
 
-            //Remove previous active classes before adding one to item
+            // Remove previous active classes
 
             if (teamTree.querySelector('.active')) {
                 teamTree.querySelector('.active').classList.remove('active');
             }
+
+            // Only add class to clicked circle, then showCard
 
             teamItemCircle[index].classList.add('active');
 
@@ -102,7 +110,7 @@ const teamCircleImage = teamTree.querySelector('svg').querySelectorAll('image');
         })
     })
 
-// Replace contents from flipCards depending on side & flip
+// Flip card & replace contents depending on side
 
 function showCard(circleIndex) {
 
@@ -124,7 +132,7 @@ function showCard(circleIndex) {
         let teamCardFront = teamCard.querySelector('.teamCard--front');
         let teamCardBack =  teamCard.querySelector('.teamCard--back');
 
-        //Determine if card is flipped & replace back or front content
+        // Determine if card is flipped & replace back or front content
 
         if (teamCard.firstElementChild.classList.contains('active')) {
 
@@ -156,3 +164,26 @@ var currentYear =
     fetch('http://worldclockapi.com/api/json/utc/now')
     .then(data => data.json())
     .then(d => footerCopy.textContent = `${(new Date(d.currentDateTime).getFullYear())} © Criptominando`)
+
+
+// Dark Mode Toggle
+
+const darkModeToggle = document.getElementById('darkModeCheckbox');
+
+if (localStorage.getItem('darkMode') == 'on') {
+    document.body.classList.toggle('darkMode')
+    darkModeToggle.checked = true;
+}
+
+darkModeToggle.addEventListener('click', () => {
+
+    document.body.classList.toggle('darkMode')
+
+    if (document.body.classList.contains('darkMode')) {
+        localStorage.setItem('darkMode', 'on')
+    }
+    else {
+        localStorage.setItem('darkMode', 'off')
+    }
+
+})

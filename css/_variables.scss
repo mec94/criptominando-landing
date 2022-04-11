@@ -4,3 +4,27 @@ $darkOrange: #e36619;
 $white: #FFFFFF;
 $black: #282828;
 $darkGray: #645F5B;
+
+:root {
+    --backgroundClr: #FFFFFF;
+    --brightOrange: #FF7A00;
+    --mediumOrange: #E46E00;
+    --darkOrange: #e36619;
+    --white: #414141;
+    --whiteOpacity: rgba(66, 66, 66, .9);
+    --black: #282828;
+    --darkGray: #645F5B;
+    --darkGrayOpacity: rgba(100, 95, 91, .2);
+}
+
+.darkMode {
+    --backgroundClr: #000000;
+    --brightOrange: #FF7A00;
+    --mediumOrange: #E46E00;
+    --darkOrange: #e36619;
+    --white: #FFFFFF;
+    --whiteOpacity: rgba(255,255,255,.7);
+    --black: #282828;
+    --darkGray: #645F5B;
+    --darkGrayOpacity: rgba(100, 95, 91, .2);
+}
