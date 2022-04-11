@@ -434,9 +434,8 @@ header .rightNav ul li:last-child {
 }
 
 main {
-  -webkit-transition: background-color .2s ease-in, background .2s ease-in;
-  transition: background-color .2s ease-in, background .2s ease-in;
-  background: none;
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
   background-color: var(--backgroundClr);
   background-blend-mode: multiply;
   background-size: cover;

@@ -170,7 +170,7 @@ var currentYear =
 
 const darkModeToggle = document.getElementById('darkModeCheckbox');
 const mainHTML = document.querySelector('main');
-const backgroundLocation = "url('../img/backgroundcrypto2.jpeg')";
+const backgroundLocation = "url('./img/backgroundcrypto2.jpeg')";
 
 if (localStorage.getItem('darkMode') == 'on') {
     document.body.classList.toggle('darkMode')

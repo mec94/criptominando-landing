@@ -188,8 +188,7 @@ header {
 // Main
 
 main {
-    transition: background-color .2s ease-in, background .2s ease-in;
-    background: none;
+    transition: background-color .2s ease-in;
     background-color: var(--backgroundClr);
     background-blend-mode: multiply;
     background-size: cover;
