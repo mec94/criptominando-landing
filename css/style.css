@@ -153,6 +153,13 @@ header {
   z-index: 100;
 }
 
+@media screen and (max-width: 800px) {
+  header {
+    position: relative;
+    height: 10vh;
+  }
+}
+
 header nav {
   position: fixed;
   height: 8vh;
@@ -173,6 +180,12 @@ header nav {
   -webkit-transition: background-color .2s ease-in;
   transition: background-color .2s ease-in;
   background-color: var(--backgroundClr);
+}
+
+@media screen and (max-width: 800px) {
+  header nav {
+    height: 10vh;
+  }
 }
 
 header nav ul {
@@ -197,6 +210,13 @@ header nav ul li:hover::before {
 header nav ul li:hover::after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
+}
+
+@media screen and (max-width: 800px) {
+  header nav ul li {
+    height: auto;
+    padding: 1em .5em;
+  }
 }
 
 header nav ul li::before {
@@ -293,6 +313,32 @@ header .leftNav #logoContainer img {
           transform: translateY(-50%);
 }
 
+header .leftNav .hamburguerMenu {
+  display: none;
+  z-index: 200;
+  position: fixed;
+  padding: .5em .8em;
+  bottom: 1em;
+  right: 1em;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+@media screen and (max-width: 800px) {
+  header .leftNav .hamburguerMenu {
+    display: block;
+  }
+}
+
+header .leftNav .hamburguerMenu span {
+  display: inline-block;
+  width: 100%;
+  height: .3em;
+  background-color: var(--backgroundClr);
+}
+
 header .leftNav ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -308,6 +354,37 @@ header .leftNav ul {
           align-items: center;
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  header .leftNav ul {
+    display: block;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: fixed;
+    bottom: 15%;
+    right: 1.2em;
+    border-radius: 10px;
+    height: auto;
+    background-color: var(--brightOrange);
+    -webkit-transition: -webkit-transform .3s ease-out;
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+  }
+  header .leftNav ul.active {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 
 header .rightNav {
@@ -379,6 +456,17 @@ main {
           align-items: center;
   padding: 1em;
   height: 100vh;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent {
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+  }
 }
 
 .sectionContent__left {
@@ -530,6 +618,13 @@ main {
   width: 80%;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent__steps-bar {
+    margin: 4em 0;
+    width: 90%;
+  }
+}
+
 .sectionContent__steps-bar .bar-sections {
   position: absolute;
   list-style: decimal;
@@ -548,6 +643,24 @@ main {
       -ms-flex-align: stretch;
           align-items: stretch;
   color: var(--white);
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent__steps-bar .bar-sections {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    position: relative;
+  }
 }
 
 .sectionContent__steps-bar .bar-item {
@@ -573,6 +686,14 @@ main {
   z-index: 10;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent__steps-bar .bar-item {
+    width: auto;
+    padding: .8em 2em;
+    margin-bottom: .5em;
+  }
+}
+
 .sectionContent__steps-bar .bar-item h4 {
   text-transform: uppercase;
   text-align: center;
@@ -586,6 +707,17 @@ main {
   width: .3em;
   height: 1.3em;
   background-color: var(--white);
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent__steps-bar .bar-item .itemStop {
+    position: absolute;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    top: 20%;
+    left: .4em;
+    height: 1.2em;
+  }
 }
 
 .sectionContent__steps-bar .bar-item .itemBackground {
@@ -643,6 +775,23 @@ main {
   background-color: var(--white);
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent__bar {
+    height: auto;
+    background-color: transparent;
+  }
+}
+
+.sectionContent__bar .mobileSidebar {
+  position: absolute;
+  top: -2.2em;
+  left: -.4em;
+  border-radius: 10px;
+  height: 120%;
+  width: .4em;
+  background-color: var(--white);
+}
+
 .sectionContent__selectedBarItem {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -660,6 +809,24 @@ main {
   width: 70%;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent__selectedBarItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .sectionContent__selectedBarItem div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -675,6 +842,12 @@ main {
       -ms-flex-align: center;
           align-items: center;
   margin-right: 3em;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent__selectedBarItem div {
+    display: none;
+  }
 }
 
 .sectionContent__selectedBarItem div > * + * {
@@ -730,6 +903,14 @@ main {
   -webkit-perspective: 1000px;
           perspective: 1000px;
   z-index: 150;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard {
+    position: relative;
+    height: 35vh;
+    z-index: inherit;
+  }
 }
 
 .sectionContent .teamCard__Flip {
@@ -791,6 +972,12 @@ main {
   font-weight: 600;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__top h3 {
+    text-align: center;
+  }
+}
+
 .sectionContent .teamCard__top div {
   position: absolute;
   z-index: 10;
@@ -799,6 +986,12 @@ main {
   background-color: var(--white);
   height: 100%;
   width: 30%;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__top div {
+    display: none;
+  }
 }
 
 .sectionContent .teamCard__top div::before {
@@ -841,6 +1034,12 @@ main {
   padding: 0 2em;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__picture {
+    display: none;
+  }
+}
+
 .sectionContent .teamCard__picture img {
   height: 100%;
   -o-object-fit: cover;
@@ -865,13 +1064,32 @@ main {
   background-color: var(--darkGrayOpacity);
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__content {
+    height: 100%;
+  }
+}
+
 .sectionContent .teamCard__content p {
   margin-top: 0;
   max-width: 90%;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__content p {
+    font-size: 1em;
+    height: 100%;
+  }
+}
+
 .sectionContent .teamTree {
   position: relative;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent .teamTree {
+    width: 80vw;
+  }
 }
 
 .sectionContent .teamTree__member {
@@ -912,6 +1130,15 @@ main {
           align-items: center;
 }
 
+@media screen and (max-width: 800px) {
+  #proyecto {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
 #proyecto .sectionContent__right {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
@@ -931,6 +1158,13 @@ main {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+}
+
+@media screen and (max-width: 800px) {
+  #proyecto .sectionContent__left {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 footer {

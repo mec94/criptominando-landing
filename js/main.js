@@ -187,3 +187,13 @@ darkModeToggle.addEventListener('click', () => {
     }
 
 })
+
+// Hamburguer Menu - Mobile Only
+
+const hamburguerMenu = document.querySelector('.hamburguerMenu');
+
+const leftNavUl = document.querySelector('.leftNav ul');
+
+hamburguerMenu.addEventListener('click', () => {
+    leftNavUl.classList.toggle('active')
+})
