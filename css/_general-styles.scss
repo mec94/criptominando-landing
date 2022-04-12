@@ -13,7 +13,7 @@ a {
     text-transform: uppercase;
     font-size: 1.4em;
     font-weight: 600;
-    color: var(--white);
+    color: var(--white2);
     padding: .4em 1.4em;
     background-color: var(--brightOrange);
 
@@ -23,7 +23,6 @@ a {
 
     &:hover::before {
         transform: scale(1,1);
-
     }
 
     &__linkFrames {

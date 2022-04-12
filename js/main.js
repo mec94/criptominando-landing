@@ -32,15 +32,23 @@ firstStepsBar.forEach( (item,index) => {
 function setBarItemContent(itemIndex) {
 
     let barItemTitle = 
-        ['Chat Disponible',
-        'Pedir Cotización',
-        'Invertir en Pools',
-        'Recomiendanos'];
+    [
+        'Hablá con un asesor',
+        'Crea tu cuenta',
+        'Carga cripto en tu cuenta',
+        'Elige donde minar',
+        'Comprar',
+        'Recibir ganancias',
+    ];
     let barItemImage = 
-        ['./img/iconChat.svg',
+    [
+        './img/iconChat.svg',
         './img/iconHashpower.svg',
         './img/iconGPUMining.svg',
-        './img/iconRewards.svg'];
+        './img/iconRewards.svg',
+        './img/iconRewards.svg',
+        './img/iconRewards.svg'
+    ];
 
     // Replace content w/ array's one
 
@@ -49,10 +57,12 @@ function setBarItemContent(itemIndex) {
 
     let listItems = new Array();
 
-    listItems.push(['Inicia un chat con nosotros', 'Aclara tus dudas y consulta sobre el servicio'])
-    listItems.push(['Informate de la cotización diaria', 'Asesoramiento personalizado sobre opciones de inversión'])
-    listItems.push(['Acercate a las oficinas de CriptoSpot', 'Invierte con una empresa de confianza']);
-    listItems.push(['Sumate al programa de afiliados', 'Recibe comisiones por hasta 5 niveles de referido']);
+    listItems.push(['El te ayudará en todo el proceso para que puedas invertir con tranquilidad y seguridad.','Inicia un chat ahora para resolver tus dudas'])
+    listItems.push(['Para hacerlo tendrás una capacitación previa que te explicará como funciona la minería y como vas a generar ganancias con esa inversión.'])
+    listItems.push(['Deposita Criptomonedas a tu cuenta o podes cargar en efectivo con nosotros.']);
+    listItems.push(['Podrás elegir que moneda queres minar y ver las ganancias estimadas de cada pool.']);
+    listItems.push(['Con tu saldo de billetera vas a poder comprar tu participación a partir de 10 dólares en cripto.']);
+    listItems.push(['Empeza a recibir los beneficios en tu billetera dentro de la plataforma.']);
 
     createListItems(itemIndex)
 
@@ -117,8 +127,24 @@ function showCard(circleIndex) {
     let imageSource = teamCircleImage[circleIndex].getAttribute('xlink:href');
 
     let crewMemberTitle = 
-        ['Facundo', 'Mijail', 'Matias',
-        'Lucia', 'Lucas L', 'Lucas R'];
+        [
+            'Facundo',
+            'Mijail',
+            'Matias',
+            'Lucia',
+            'Lucas L',
+            'Lucas R'
+        ];
+
+    let crewMemberDescription =
+        [
+            'Descripción Facundo',
+            'Descripción Mijail',
+            'Descripción Matias',
+            'Descripción Lucia',
+            'Descripción Lucas L',
+            'Descripción Lucas R',
+        ];
 
     flipCard()
     replaceCardContent()
@@ -140,6 +166,8 @@ function showCard(circleIndex) {
             crewMemberTitle[circleIndex];
         teamCardBack.children[1].firstElementChild.src =
             imageSource
+        teamCardBack.children[2].firstElementChild.textContent =
+            crewMemberDescription[circleIndex]
 
         }
 
@@ -149,6 +177,8 @@ function showCard(circleIndex) {
             crewMemberTitle[circleIndex];
         teamCardFront.children[1].firstElementChild.src =
             imageSource
+        teamCardFront.children[2].firstElementChild.textContent =
+            crewMemberDescription[circleIndex]
 
         }
         

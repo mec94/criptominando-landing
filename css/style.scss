@@ -12,11 +12,6 @@ header {
     width: 100%;
     z-index: 100;
 
-    @media screen and (max-width: 800px) {
-        position: relative;
-        height: 10vh;
-    }
-
     nav {
         position: fixed;
         height: 8vh;
@@ -27,6 +22,7 @@ header {
 
         @media screen and (max-width: 800px) {
             height: 10vh;
+            position: relative;
         }
 
         ul {
@@ -86,6 +82,10 @@ header {
             letter-spacing: .2px;
             font-weight: 600;
             height: 100%;
+
+            @media screen and (max-width: 800px) {
+                color: var(--white2)
+            }
         }
     }
 
@@ -98,15 +98,13 @@ header {
 
         #logoContainer {
             position: relative;
-            height: 70%;
-            flex-basis: 5%;
+            width: 2.5em;
+            height: 100%;
 
             img {
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                top: 50%;
-                transform: translateY(-50%);
             }
         }
 
@@ -120,7 +118,7 @@ header {
             width: 4em;
             height: 4em;
             border-radius: 50%;
-            background-color: var(--white);
+            background-color: var(--brightOrange);
 
             @media screen and (max-width: 800px) {
                 display: block;
@@ -193,6 +191,10 @@ main {
     background-blend-mode: multiply;
     background-size: cover;
     background-attachment: fixed;
+
+    @media screen and (max-width: 800px) {
+        padding-top: 10vh;
+    }
 }
 
 .sectionContent {
@@ -209,7 +211,11 @@ main {
 
     &__left {
 
-        flex-basis: 45%;
+        flex-basis: 50%;
+
+        @media screen and (max-width: 800px) {
+            width: 100%;
+        }
 
         h2 {
             font-size: 4em;
@@ -217,6 +223,10 @@ main {
             letter-spacing: .5px;
             line-height: 1.1;
             color: var(--white);
+
+            @media screen and (max-width: 800px) {
+                font-size: 3em;
+            }
 
             b {
                 color: var(--brightOrange);
@@ -228,12 +238,23 @@ main {
             color: var(--whiteOpacity);
             font-weight: 400;
             font-size: 2em;
-            max-width: 80%;
+            max-width: 85%;
+
+            @media screen and (max-width: 800px) {
+                font-size: 1.6em;
+                max-width: 90%;
+                text-align: left;
+            }
         }
     }
 
     &__right {
-        flex-basis: 35%;
+
+        flex-basis: 40%;
+
+        @media screen and (max-width: 800px) {
+            width: 100%;
+        }
     }
 
     &__cta-buttons {
@@ -244,13 +265,18 @@ main {
     }
 
     &__whyus {
+        position: relative;
+        z-index: 50;
         @include dispFlex(center,flex-start,column);
         border: 2px solid var(--brightOrange);
         height: 100%;
         overflow: hidden;
 
+        @media screen and (max-width: 800px) {
+            margin-top: 2em;
+        }
+
         div {
-            position: relative;
             width: 100%;
             padding: 1em;
             @include dispFlex(space-between,center,row);
@@ -264,12 +290,6 @@ main {
                 text-transform: uppercase;
                 color: var(--brightOrange)
             }
-
-            img {
-                position: absolute;
-                right: -2em;
-                height: 100%;
-            }
         }
 
         ol {
@@ -281,12 +301,30 @@ main {
             font-weight: 500;
 
             li {
-                line-height: 1.8;
+                line-height: 1.2;
+            }
+
+            li + li {
+                margin-top: .8em;
+            }
+        }
+
+        img {
+            position: absolute;
+            right: -2em;
+            bottom: -.5em;
+            height: 40%;
+            z-index: -1;
+
+            @media screen and (max-width: 800px) {
+                height: 20%
             }
         }
     }
 
     &__top {
+
+        margin-bottom: 2em;
 
         h4 {
             position: relative;
@@ -295,6 +333,10 @@ main {
             text-transform: uppercase;
             color: var(--brightOrange);
             font-weight: 600;
+
+            @media screen and (max-width: 800px) {
+                left: 0;
+            }
         }
         
         h3 {
@@ -344,7 +386,7 @@ main {
         .bar-item {
             position: relative;
             @include dispFlex(space-between,center,column);
-            width: 12em;
+            width: 10em;
             padding: 1.2em .5em 0;
             cursor: pointer;
             transition: color .4s linear;
@@ -421,6 +463,7 @@ main {
         }
 
         .mobileSidebar {
+            display: none;
             position: absolute;
             top: -2.2em;
             left: -.4em;
@@ -428,18 +471,25 @@ main {
             height: 120%;
             width: .4em;
             background-color: var(--white);
+
+            @media screen and (max-width: 800px) {
+                display: block;
+            }
         }
     }
 
     &__selectedBarItem {
-        @include dispFlex(space-evenly,center,row);
+        @include dispFlex(space-around,center,row);
         width: 70%;
 
         @media screen and (max-width: 800px) {
+            top: 0;
             @include dispFlex(space-evenly,center,column);
         }
 
         div {
+            
+            flex-basis: 30%;
 
             @include dispFlex(flex-start,center,row);
             margin-right: 3em;
@@ -468,10 +518,12 @@ main {
 
         ul {
 
+            flex-basis: 55%;
+
             li {
                 position: relative;
                 color: var(--white);
-                line-height: 2;
+                line-height: 1.6;
                 font-size: 1.4em;
                 font-weight: 500;
 
@@ -487,6 +539,48 @@ main {
                     border: 5px solid var(--brightOrange);
                 }
             }
+        }
+    }
+
+    .contact-button {
+        width: 40%;
+        @include dispFlex(center,center,row);
+        z-index: 50;
+        transition: transform .3s ease-out, filter .3s linear;
+        cursor: pointer;
+
+        .button__left {
+            @include dispFlex(center,center,row);
+            background-color: var(--white);
+            border-radius: 50%;
+            width: 7em;
+            height: 7em;
+
+            img {
+                width: 66%;
+            }
+        }
+
+        .button__right {
+            position: relative;
+            z-index: -1;
+            left: -.8em;
+            padding: 1.4em 1.5em;
+            background-color: var(--brightOrange);
+            border-radius: 0 15px 15px 0;
+
+            h3 {
+                font-size: 1.6em;
+                color: var(--white2);
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            filter: brightness(120%);
+            
         }
     }
 
@@ -538,7 +632,7 @@ main {
 
             h3 {
                 font-size: 2em;
-                color: var(--white);
+                color: var(--white2);
                 text-transform: uppercase;
                 font-weight: 600;
 
@@ -586,7 +680,7 @@ main {
 
             @include dispFlex(center,center,row);
             overflow: hidden;
-            padding: 0 2em;
+            padding: 1em 2em;
 
             @media screen and (max-width: 800px) {
                 display: none;
@@ -611,6 +705,7 @@ main {
             p {
                 margin-top: 0;
                 max-width: 90%;
+                font-size: 1.3em;
 
                 @media screen and (max-width: 800px) {
                     font-size: 1em;
@@ -622,10 +717,6 @@ main {
 
     .teamTree {
         position: relative;
-
-        @media screen and (max-width: 800px) {
-            width: 80vw;
-        }
 
         &__member {
             position: absolute;
@@ -670,19 +761,9 @@ main {
         flex-direction: column-reverse;
     }
 
-    .sectionContent__right {
-
-        flex-basis: 40%;
-    }
-
     .sectionContent__left {
         height: 80%;
         @include dispFlex(space-around,stretch,row);
-
-        @media screen and (max-width: 800px) {
-            width: 100%;
-            height: 100%;
-        }
     }
 }
 
@@ -690,29 +771,40 @@ main {
 
 
 footer {
-    @include dispFlex(space-between, center, row);
+    @include dispFlex(space-between, stretch, row);
     background-color: var(--brightOrange);
+
+    @media screen and (max-width: 800px) {
+        @include dispFlex(space-between, stretch, column);
+    }
 
     .footer__left {
         padding: 1.2em 2em;
     }
 
     .footer__right {
-        padding: 1.2em 2em;
         background-color: var(--darkOrange);
+        @include dispFlex(space-between, center, row);
     }
 
     p {
         font-size: 1.2em;
         text-transform: uppercase;
-        color: var(--white);
-        font-weight: 500
+        color: var(--white2);
+        font-weight: 500;
     }
 
     a {
-        color: var(--white);
+        @include dispFlex(space-between, center, row);
+        padding: .5em 1.5em;
+        height: 100%;
+        color: var(--white2);
         font-size: 1.2em;
         text-transform: uppercase;
         font-weight: 600;
+
+        & + a {
+            border-left: 2px solid var(--brightOrange);
+        }
     }
 }
