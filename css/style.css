@@ -995,14 +995,15 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: var(--white);
+  background-color: var(--brightOrange);
   border-radius: 50%;
+  border: 2px solid var(--white2);
   width: 6em;
   height: 6em;
 }
 
 .sectionContent .contact-button .button__left img {
-  width: 66%;
+  width: 60%;
 }
 
 .sectionContent .contact-button .button__right {
