@@ -27,6 +27,18 @@ firstStepsBar.forEach( (item,index) => {
     })
 })
 
+// On Mobile, go to bar top when clicking an item, to ensure all content is shown
+
+function goToTop(resolution,element) {
+
+    if (window.innerWidth <= resolution) {
+
+        document.querySelector(element).scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+}
+
 // Set bar item title, image, list items
 
 function setBarItemContent(itemIndex) {
@@ -57,7 +69,7 @@ function setBarItemContent(itemIndex) {
 
     let listItems = new Array();
 
-    listItems.push(['El te ayudará en todo el proceso para que puedas invertir con tranquilidad y seguridad.','Inicia un chat ahora para resolver tus dudas'])
+    listItems.push(['El te ayudará en todo el proceso para que puedas invertir con tranquilidad y seguridad.'])
     listItems.push(['Para hacerlo tendrás una capacitación previa que te explicará como funciona la minería y como vas a generar ganancias con esa inversión.'])
     listItems.push(['Deposita Criptomonedas a tu cuenta o podes cargar en efectivo con nosotros.']);
     listItems.push(['Podrás elegir que moneda queres minar y ver las ganancias estimadas de cada pool.']);

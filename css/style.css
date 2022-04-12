@@ -366,7 +366,7 @@ header .leftNav ul {
         -ms-flex-pack: center;
             justify-content: center;
     position: fixed;
-    bottom: 15%;
+    bottom: 6em;
     right: 1.2em;
     border-radius: 10px;
     height: auto;
@@ -630,7 +630,7 @@ main {
 
 @media screen and (max-width: 800px) {
   .sectionContent__whyus img {
-    height: 20%;
+    display: none;
   }
 }
 
@@ -946,6 +946,13 @@ main {
   font-weight: 500;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent__selectedBarItem ul li {
+    font-size: 1.2em;
+    line-height: 1.4;
+  }
+}
+
 .sectionContent__selectedBarItem ul li::before {
   position: absolute;
   content: "";
@@ -959,7 +966,6 @@ main {
 }
 
 .sectionContent .contact-button {
-  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -981,6 +987,12 @@ main {
   cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent .contact-button {
+    margin-top: 2em;
+  }
+}
+
 .sectionContent .contact-button .button__left {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1000,6 +1012,8 @@ main {
   border: 2px solid var(--white2);
   width: 6em;
   height: 6em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .sectionContent .contact-button .button__left img {
@@ -1007,12 +1021,33 @@ main {
 }
 
 .sectionContent .contact-button .button__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
   z-index: -1;
   left: -.8em;
-  padding: 1.2em 1.5em;
+  height: 60%;
+  padding: 0 1.5em;
   background-color: var(--brightOrange);
-  border-radius: 0 15px 15px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent .contact-button .button__right {
+    padding: .5em 1em;
+    text-align: right;
+  }
 }
 
 .sectionContent .contact-button .button__right h3 {
@@ -1107,6 +1142,12 @@ main {
   position: relative;
   padding: 1em 1.5em;
   background-color: var(--brightOrange);
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__top {
+    padding: 1em 0;
+  }
 }
 
 .sectionContent .teamCard__top h3 {
@@ -1387,5 +1428,11 @@ footer a {
 
 footer a + a {
   border-left: 2px solid var(--brightOrange);
+}
+
+@media screen and (max-width: 800px) {
+  footer a {
+    width: 50%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
