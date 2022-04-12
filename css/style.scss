@@ -543,7 +543,7 @@ main {
     }
 
     .contact-button {
-        width: 40%;
+        width: 30%;
         @include dispFlex(center,center,row);
         z-index: 50;
         transition: transform .3s ease-out, filter .3s linear;
@@ -553,8 +553,8 @@ main {
             @include dispFlex(center,center,row);
             background-color: var(--white);
             border-radius: 50%;
-            width: 7em;
-            height: 7em;
+            width: 6em;
+            height: 6em;
 
             img {
                 width: 66%;
@@ -565,7 +565,7 @@ main {
             position: relative;
             z-index: -1;
             left: -.8em;
-            padding: 1.4em 1.5em;
+            padding: 1.2em 1.5em;
             background-color: var(--brightOrange);
             border-radius: 0 15px 15px 0;
 

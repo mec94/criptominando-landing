@@ -959,7 +959,7 @@ main {
 }
 
 .sectionContent .contact-button {
-  width: 40%;
+  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -997,8 +997,8 @@ main {
           align-items: center;
   background-color: var(--white);
   border-radius: 50%;
-  width: 7em;
-  height: 7em;
+  width: 6em;
+  height: 6em;
 }
 
 .sectionContent .contact-button .button__left img {
@@ -1009,7 +1009,7 @@ main {
   position: relative;
   z-index: -1;
   left: -.8em;
-  padding: 1.4em 1.5em;
+  padding: 1.2em 1.5em;
   background-color: var(--brightOrange);
   border-radius: 0 15px 15px 0;
 }
