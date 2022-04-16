@@ -86,11 +86,10 @@ a {
   position: absolute;
   z-index: -1;
   content: "";
-  width: 100%;
+  width: 99%;
   height: 100%;
   top: 0;
   left: 0;
-  right: 0;
   background-color: var(--darkOrange);
   -webkit-transform: scale(1, 0);
           transform: scale(1, 0);
@@ -529,6 +528,41 @@ main {
   }
 }
 
+.sectionContent__right #criptominandoBigImage {
+  -webkit-animation: moveImage 5s ease-in-out infinite;
+          animation: moveImage 5s ease-in-out infinite;
+}
+
+@-webkit-keyframes moveImage {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(2%);
+            transform: translateY(2%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes moveImage {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(2%);
+            transform: translateY(2%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 .sectionContent__cta-buttons {
   margin-top: 1.2em;
   display: -webkit-box;
@@ -613,14 +647,46 @@ main {
 }
 
 .sectionContent__whyus ol li {
+  position: relative;
   line-height: 1.2;
+}
+
+.sectionContent__whyus ol li::after {
+  position: absolute;
+  left: 2px;
+  bottom: -6px;
+  content: "";
+  width: 99%;
+  height: 2px;
+  background-color: var(--white);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: background-color 1.2s ease-in, -webkit-transform 1.7s ease-in-out;
+  transition: background-color 1.2s ease-in, -webkit-transform 1.7s ease-in-out;
+  transition: transform 1.7s ease-in-out, background-color 1.2s ease-in;
+  transition: transform 1.7s ease-in-out, background-color 1.2s ease-in, -webkit-transform 1.7s ease-in-out;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.sectionContent__whyus ol li.active::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  background-color: var(--brightOrange);
+}
+
+.sectionContent__whyus ol li.active:nth-child(3):after {
+  -webkit-transition: background-color 1.2s ease-in, -webkit-transform 2s ease-in-out;
+  transition: background-color 1.2s ease-in, -webkit-transform 2s ease-in-out;
+  transition: transform 2s ease-in-out, background-color 1.2s ease-in;
+  transition: transform 2s ease-in-out, background-color 1.2s ease-in, -webkit-transform 2s ease-in-out;
 }
 
 .sectionContent__whyus ol li + li {
   margin-top: .8em;
 }
 
-.sectionContent__whyus img {
+.sectionContent__whyus #skewedLinesImg {
   position: absolute;
   right: -2em;
   bottom: -.5em;
@@ -629,7 +695,7 @@ main {
 }
 
 @media screen and (max-width: 800px) {
-  .sectionContent__whyus img {
+  .sectionContent__whyus #skewedLinesImg {
     display: none;
   }
 }
@@ -738,6 +804,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 10em;
+  height: 5.5em;
   padding: 1.2em .5em 0;
   cursor: pointer;
   -webkit-transition: color .4s linear;
@@ -761,6 +828,8 @@ main {
 }
 
 .sectionContent__steps-bar .bar-item .itemStop {
+  position: absolute;
+  bottom: 0;
   z-index: 1;
   margin-top: .2em;
   width: .3em;
@@ -788,43 +857,72 @@ main {
   background-color: var(--brightOrange);
   -webkit-transform: scale(1, 0);
           transform: scale(1, 0);
+  opacity: 0;
   -webkit-transform-origin: bottom;
           transform-origin: bottom;
 }
 
 @-webkit-keyframes animateBackground {
   0% {
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
     -webkit-transform: scale(1, 0);
             transform: scale(1, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: .3;
+  }
+  30% {
+    opacity: .7;
+  }
+  40% {
+    opacity: .9;
   }
   50% {
     -webkit-transform: scale(1, 1);
             transform: scale(1, 1);
+    opacity: 1;
   }
   100% {
     -webkit-transform: scale(1, 0.9);
             transform: scale(1, 0.9);
+    opacity: 1;
   }
 }
 
 @keyframes animateBackground {
   0% {
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
     -webkit-transform: scale(1, 0);
             transform: scale(1, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: .3;
+  }
+  30% {
+    opacity: .7;
+  }
+  40% {
+    opacity: .9;
   }
   50% {
     -webkit-transform: scale(1, 1);
             transform: scale(1, 1);
+    opacity: 1;
   }
   100% {
     -webkit-transform: scale(1, 0.9);
             transform: scale(1, 0.9);
+    opacity: 1;
   }
 }
 
 .sectionContent__steps-bar .bar-item .itemBackground.active {
-  -webkit-animation: animateBackground .7s ease-in-out forwards;
-          animation: animateBackground .7s ease-in-out forwards;
+  -webkit-animation: animateBackground .9s ease-in-out forwards;
+          animation: animateBackground .9s ease-in-out forwards;
 }
 
 .sectionContent__bar {
@@ -832,6 +930,7 @@ main {
   border-radius: 10px;
   width: 100%;
   background-color: var(--white);
+  z-index: 20;
 }
 
 @media screen and (max-width: 800px) {
@@ -844,10 +943,10 @@ main {
 .sectionContent__bar .mobileSidebar {
   display: none;
   position: absolute;
-  top: -2.2em;
+  top: -1.5em;
   left: -.4em;
   border-radius: 10px;
-  height: 120%;
+  height: 100%;
   width: .4em;
   background-color: var(--white);
 }
@@ -872,6 +971,8 @@ main {
       -ms-flex-align: center;
           align-items: center;
   width: 70%;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 @media screen and (max-width: 800px) {
@@ -893,6 +994,60 @@ main {
   }
 }
 
+@-webkit-keyframes animateBarItem {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 0, 0deg);
+            transform: rotate3d(0, 0, 0, 0deg);
+  }
+  20% {
+    -webkit-transform: rotate3d(1, 1, 0.2, 10deg) scale(1.1);
+            transform: rotate3d(1, 1, 0.2, 10deg) scale(1.1);
+  }
+  35% {
+    -webkit-transform: rotate3d(1, 1, 0.2, -8deg) scale(1.1);
+            transform: rotate3d(1, 1, 0.2, -8deg) scale(1.1);
+  }
+  50% {
+    -webkit-transform: rotate3d(1, 1, 0, 5deg) scale(1.1);
+            transform: rotate3d(1, 1, 0, 5deg) scale(1.1);
+  }
+  70% {
+    -webkit-transform: rotate3d(0, 0, 0, 0deg) scale(1);
+            transform: rotate3d(0, 0, 0, 0deg) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 0, 0deg) scale(1);
+            transform: rotate3d(0, 0, 0, 0deg) scale(1);
+  }
+}
+
+@keyframes animateBarItem {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 0, 0deg);
+            transform: rotate3d(0, 0, 0, 0deg);
+  }
+  20% {
+    -webkit-transform: rotate3d(1, 1, 0.2, 10deg) scale(1.1);
+            transform: rotate3d(1, 1, 0.2, 10deg) scale(1.1);
+  }
+  35% {
+    -webkit-transform: rotate3d(1, 1, 0.2, -8deg) scale(1.1);
+            transform: rotate3d(1, 1, 0.2, -8deg) scale(1.1);
+  }
+  50% {
+    -webkit-transform: rotate3d(1, 1, 0, 5deg) scale(1.1);
+            transform: rotate3d(1, 1, 0, 5deg) scale(1.1);
+  }
+  70% {
+    -webkit-transform: rotate3d(0, 0, 0, 0deg) scale(1);
+            transform: rotate3d(0, 0, 0, 0deg) scale(1);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 0, 0deg) scale(1);
+            transform: rotate3d(0, 0, 0, 0deg) scale(1);
+  }
+}
+
 .sectionContent__selectedBarItem div {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
@@ -910,6 +1065,8 @@ main {
       -ms-flex-align: center;
           align-items: center;
   margin-right: 3em;
+  -webkit-animation: animateBarItem 8s ease-in-out infinite;
+          animation: animateBarItem 8s ease-in-out infinite;
 }
 
 @media screen and (max-width: 800px) {
@@ -989,6 +1146,7 @@ main {
 
 @media screen and (max-width: 800px) {
   .sectionContent .contact-button {
+    width: 80%;
     margin-top: 2em;
   }
 }
@@ -1014,6 +1172,7 @@ main {
   height: 6em;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  z-index: 2;
 }
 
 .sectionContent .contact-button .button__left img {
@@ -1035,7 +1194,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  z-index: -1;
+  z-index: 1;
   left: -.8em;
   height: 60%;
   padding: 0 1.5em;
@@ -1057,11 +1216,27 @@ main {
   text-transform: uppercase;
 }
 
-.sectionContent .contact-button:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  -webkit-filter: brightness(120%);
-          filter: brightness(120%);
+.sectionContent .contact-button .button__right::before {
+  position: absolute;
+  content: '';
+  border-radius: 0 10px 10px 0;
+  width: 100%;
+  height: 99%;
+  background-color: var(--mediumOrange);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  z-index: -1;
+}
+
+.sectionContent .contact-button:hover .button__right::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 .sectionContent .teamCard {
@@ -1113,7 +1288,7 @@ main {
   position: absolute;
   overflow: hidden;
   border: 2px solid var(--brightOrange);
-  border-radius: 14px;
+  border-top: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1131,6 +1306,20 @@ main {
           backface-visibility: hidden;
   width: 100%;
   height: 100%;
+}
+
+.sectionContent .teamCard--default {
+  -webkit-transition: opacity .5s ease-out;
+  transition: opacity .5s ease-out;
+}
+
+.sectionContent .teamCard--default.active {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.sectionContent .teamCard--front {
+  display: none;
 }
 
 .sectionContent .teamCard--back {
@@ -1170,7 +1359,7 @@ main {
   top: 0;
   background-color: var(--white);
   height: 100%;
-  width: 30%;
+  width: 25%;
 }
 
 @media screen and (max-width: 800px) {
@@ -1192,11 +1381,30 @@ main {
           transform: skew(-16deg);
 }
 
+.sectionContent .teamCard__top div .resetCardBtn {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  height: 70%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.sectionContent .teamCard__top div .resetCardBtn img {
+  width: 100%;
+  height: 100%;
+}
+
 .sectionContent .teamCard__top div img {
   position: absolute;
-  width: 4em;
-  left: 50%;
+  height: 70%;
   top: 50%;
+  left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -1242,57 +1450,151 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 2em 1em;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 1.2em;
   background-color: var(--darkGrayOpacity);
+  height: 100%;
 }
 
 @media screen and (max-width: 800px) {
   .sectionContent .teamCard__content {
     height: 100%;
+    padding: .8em;
   }
 }
 
 .sectionContent .teamCard__content p {
-  margin-top: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
   max-width: 90%;
   font-size: 1.3em;
+  line-height: 1.2;
+}
+
+.sectionContent .teamCard__content p + p {
+  margin-top: .5em;
 }
 
 @media screen and (max-width: 800px) {
   .sectionContent .teamCard__content p {
     font-size: 1em;
     height: 100%;
+    max-width: 100%;
   }
+  .sectionContent .teamCard__content p:first-child {
+    display: none;
+  }
+  .sectionContent .teamCard__content p + p {
+    margin-top: 0;
+  }
+}
+
+.sectionContent .teamCard__team {
+  display: none;
+  position: relative;
+  background-color: var(--brightOrange);
+  padding: 1em 0 0;
+}
+
+@media screen and (min-width: 1600px) {
+  .sectionContent .teamCard__team {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.sectionContent .teamCard__team h4 {
+  color: var(--white2);
+  font-size: 2em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: .8em;
+}
+
+.sectionContent .teamCard__team img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  opacity: .8;
 }
 
 .sectionContent .teamTree {
   position: relative;
-}
-
-.sectionContent .teamTree__member {
-  position: absolute;
-  width: 2em;
-}
-
-.sectionContent .teamTree__background {
   width: 100%;
   height: 100%;
 }
 
-.sectionContent .teamTree__background svg circle.active {
-  -webkit-filter: drop-shadow(0 0 10px var(--brightOrange));
-          filter: drop-shadow(0 0 10px var(--brightOrange));
+@media screen and (max-width: 800px) {
+  .sectionContent .teamTree {
+    margin-bottom: 2em;
+  }
 }
 
-.sectionContent .teamTree__background svg image {
-  width: 26.5%;
-  height: 26.5%;
-  -webkit-clip-path: circle(40% at 50% 50%);
-          clip-path: circle(40% at 50% 50%);
+.sectionContent .teamTree .honeyComb g {
+  -webkit-clip-path: polygon(0 25.5%, 50% 0, 100% 25.5%, 100% 75%, 50% 100%, 0 75.3%);
+          clip-path: polygon(0 25.5%, 50% 0, 100% 25.5%, 100% 75%, 50% 100%, 0 75.3%);
   cursor: pointer;
+  fill: var(--white);
+}
+
+.sectionContent .teamTree .honeyComb g image {
+  width: 18%;
+  height: 24.7%;
+}
+
+.sectionContent .teamTree .honeyComb g rect {
+  width: 18%;
+  height: 24.7%;
+}
+
+.sectionContent .teamTree .honeyCombBlock {
+  -webkit-transition: -webkit-transform .4s ease-out, -webkit-filter .4s ease-out;
+  transition: -webkit-transform .4s ease-out, -webkit-filter .4s ease-out;
+  transition: transform .4s ease-out, filter .4s ease-out;
+  transition: transform .4s ease-out, filter .4s ease-out, -webkit-transform .4s ease-out, -webkit-filter .4s ease-out;
+}
+
+.sectionContent .teamTree .honeyCombBlock.selected {
+  -webkit-transform: scale(1.05) translate(-2.25%, -2%);
+          transform: scale(1.05) translate(-2.25%, -2%);
+  -webkit-filter: drop-shadow(0px 3px 5px var(--brightOrange)) drop-shadow(0px -3px 5px var(--brightOrange));
+          filter: drop-shadow(0px 3px 5px var(--brightOrange)) drop-shadow(0px -3px 5px var(--brightOrange));
+}
+
+.sectionContent .teamTree .honeyCombBlock--thirdrow.selected {
+  -webkit-transform: scale(1.03) translate(-1.4%, -2%);
+          transform: scale(1.03) translate(-1.4%, -2%);
+}
+
+.sectionContent .teamTree .honeyCombBlock--fourthrow.selected {
+  -webkit-transform: scale(1) translate(0%, -1%);
+          transform: scale(1) translate(0%, -1%);
+}
+
+.sectionContent .teamTree .svgHexagon {
+  -webkit-transition: opacity .5s ease-in, -webkit-transform .8s ease-out;
+  transition: opacity .5s ease-in, -webkit-transform .8s ease-out;
+  transition: transform .8s ease-out, opacity .5s ease-in;
+  transition: transform .8s ease-out, opacity .5s ease-in, -webkit-transform .8s ease-out;
+}
+
+.sectionContent .teamTree .svgHexagon.active {
+  -webkit-transform: scale3d(0.2, 0.2, 1);
+          transform: scale3d(0.2, 0.2, 1);
+  opacity: 0;
 }
 
 @media screen and (max-width: 800px) {

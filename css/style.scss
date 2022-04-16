@@ -255,6 +255,22 @@ main {
         @media screen and (max-width: 800px) {
             width: 100%;
         }
+
+        #criptominandoBigImage {
+            animation: moveImage 5s ease-in-out infinite;
+        }
+
+        @keyframes moveImage {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(2%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     }
 
     &__cta-buttons {
@@ -301,7 +317,30 @@ main {
             font-weight: 500;
 
             li {
+                position: relative;
                 line-height: 1.2;
+
+                &::after {
+                    position: absolute;
+                    left: 2px;
+                    bottom: -6px;
+                    content: "";
+                    width: 99%;
+                    height: 2px;
+                    background-color: var(--white);
+                    transform: scaleX(0);
+                    transition: transform 1.7s ease-in-out, background-color 1.2s ease-in;
+                    transform-origin: left;
+                }
+
+                &.active::after {
+                    transform: scaleX(1);
+                    background-color: var(--brightOrange);
+                }
+
+                &.active:nth-child(3):after {
+                    transition: transform 2s ease-in-out, background-color 1.2s ease-in;
+                }
             }
 
             li + li {
@@ -309,7 +348,7 @@ main {
             }
         }
 
-        img {
+        #skewedLinesImg {
             position: absolute;
             right: -2em;
             bottom: -.5em;
@@ -387,6 +426,7 @@ main {
             position: relative;
             @include dispFlex(space-between,center,column);
             width: 10em;
+            height: 5.5em;
             padding: 1.2em .5em 0;
             cursor: pointer;
             transition: color .4s linear;
@@ -407,6 +447,8 @@ main {
             }
 
             .itemStop {
+                position: absolute;
+                bottom: 0;
                 z-index: 1;
                 margin-top: .2em;
                 width: .3em;
@@ -430,23 +472,41 @@ main {
                 height: 100%;
                 background-color: var(--brightOrange);
                 transform: scale(1,0);
+                opacity: 0;
                 transform-origin: bottom;
             }
 
             @keyframes animateBackground {
                 0% {
+                    transform-origin: bottom;
                     transform: scale(1,0);
+                    opacity: 0;
                 }
+
+                20% {
+                    opacity: .3;
+                }
+
+                30% {
+                    opacity: .7;
+                }
+
+                40% {
+                    opacity: .9;
+                }
+
                 50% {
-                    transform: scale(1,1)
+                    transform: scale(1,1);
+                    opacity: 1;
                 }
                 100% {
                     transform: scale(1,.9);
+                    opacity: 1;
                 }
             }
 
             .itemBackground.active {
-                animation: animateBackground .7s ease-in-out forwards;
+                animation: animateBackground .9s ease-in-out forwards;
             }
         };
     }
@@ -456,6 +516,7 @@ main {
         border-radius: 10px;
         width: 100%;
         background-color: var(--white);
+        z-index: 20;
 
         @media screen and (max-width: 800px) {
             height: auto;
@@ -465,10 +526,10 @@ main {
         .mobileSidebar {
             display: none;
             position: absolute;
-            top: -2.2em;
+            top: -1.5em;
             left: -.4em;
             border-radius: 10px;
-            height: 120%;
+            height: 100%;
             width: .4em;
             background-color: var(--white);
 
@@ -481,10 +542,34 @@ main {
     &__selectedBarItem {
         @include dispFlex(space-around,center,row);
         width: 70%;
+        perspective: 1000px;
 
         @media screen and (max-width: 800px) {
             top: 0;
             @include dispFlex(space-evenly,center,column);
+        }
+
+        @keyframes animateBarItem {
+            0% {
+                transform: rotate3d(0, 0, 0, 0deg);
+            }
+            20% {
+                transform: rotate3d(1, 1, .2, 10deg) scale(1.1);
+            }
+            35% {
+                transform: rotate3d(1, 1, .2, -8deg) scale(1.1);
+            }
+            50% {
+                transform: rotate3d(1, 1, 0, 5deg) scale(1.1);
+            }
+
+            70% {
+                transform: rotate3d(0, 0, 0, 0deg) scale(1);
+            }
+
+            100% {
+                transform: rotate3d(0, 0, 0, 0deg) scale(1);
+            }
         }
 
         div {
@@ -493,7 +578,7 @@ main {
 
             @include dispFlex(flex-start,center,row);
             margin-right: 3em;
-
+            animation: animateBarItem 8s ease-in-out infinite;
 
             @media screen and (max-width: 800px) {
                 display: none;
@@ -554,7 +639,7 @@ main {
         cursor: pointer;
 
         @media screen and (max-width: 800px) {
-            
+            width: 80%;
             margin-top: 2em;
         }
 
@@ -566,6 +651,7 @@ main {
             width: 6em;
             height: 6em;
             flex-shrink: 0;
+            z-index: 2;
 
             img {
                 width: 60%;
@@ -575,7 +661,7 @@ main {
         .button__right {
             @include dispFlex(center,center,row);
             position: relative;
-            z-index: -1;
+            z-index: 1;
             left: -.8em;
             height: 60%;
             padding: 0 1.5em;
@@ -593,11 +679,24 @@ main {
                 font-weight: 500;
                 text-transform: uppercase;
             }
+
+            &::before {
+                position: absolute;
+                content: '';
+                border-radius: 0 10px 10px 0;
+                width: 100%;
+                height: 99%;
+                background-color: var(--mediumOrange);
+                transform: scaleX(0);
+                transition: transform .3s ease-out;
+                transform-origin: left;
+                z-index: -1;
+            }
         }
 
-        &:hover {
-            transform: scale(1.05);
-            filter: brightness(120%);
+        &:hover .button__right::before {
+            
+            transform: scaleX(1);
             
         }
     }
@@ -631,11 +730,24 @@ main {
             position: absolute;
             overflow: hidden;
             border: 2px solid var(--brightOrange);
-            border-radius: 14px;
+            border-top: none;
             @include dispFlex(space-between,stretch,column);
             backface-visibility: hidden;
             width: 100%;
             height: 100%;
+        }
+
+        &--default {
+
+            transition: opacity .5s ease-out;
+
+            &.active {
+                transform: rotateY(180deg);
+            }
+        }
+
+        &--front {
+            display: none;
         }
 
         &--back {
@@ -670,7 +782,7 @@ main {
                 top: 0;
                 background-color: var(--white);
                 height: 100%;
-                width: 30%;
+                width: 25%;
 
                 @media screen and (max-width: 800px) {
                     display: none;
@@ -688,13 +800,32 @@ main {
                     transform: skew(-16deg);
                 }
 
+                .resetCardBtn {
+                    position: absolute;
+                    cursor: pointer;
+                    border: none;
+                    background: none;
+                    padding: 0;
+                    height: 70%;
+                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+
+                    img {
+                        width: 100%;
+                        height: 100%
+                    }
+                }
+
                 img {
                     position: absolute;
-                    width: 4em;
-                    left: 50%;
+                    height: 70%;
                     top: 50%;
+                    left: 50%;
                     transform: translate(-50%,-50%);
                 }
+
             }
         }
 
@@ -710,54 +841,135 @@ main {
 
             img {
                 height: 100%;
-              
                 object-fit: cover;
             }
         }
 
         &__content {
-            @include dispFlex(center,center,row);
-            padding: 2em 1em;
+            @include dispFlex(center,flex-start,row);
+            padding: 1.2em;
             background-color: var(--darkGrayOpacity);
+            height: 100%;
 
             @media screen and (max-width: 800px) {
                 height: 100%;
+                padding: .8em;
             }
 
             p {
-                margin-top: 0;
+                margin-block-start: 0;
                 max-width: 90%;
                 font-size: 1.3em;
+                line-height: 1.2;
+
+                & + p {
+                    margin-top: .5em;
+                }
 
                 @media screen and (max-width: 800px) {
                     font-size: 1em;
                     height: 100%;
+                    max-width: 100%;
+
+                    &:first-child {
+                        display: none;
+                    }
+
+                    & + p {
+                        margin-top: 0;
+                    }
+
                 }
             }
+        }
+
+        &__team {
+
+            @media screen and (min-width: 1600px) {
+                @include dispFlex(space-between,center,column);
+            }
+
+            display: none;
+            position: relative;
+            background-color: var(--brightOrange);
+            padding: 1em 0 0;
+
+            h4 {
+                color: var(--white2);
+                font-size: 2em;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: .8em;
+            }
+
+            img {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                opacity: .8;
+            }
+
+
         }
     }
 
     .teamTree {
-        position: relative;
 
-        &__member {
-            position: absolute;
-            width: 2em;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        @media screen and (max-width: 800px) {
+            margin-bottom: 2em;
         }
 
-        &__background {
-            width: 100%;
-            height: 100%;
+        .honeyComb g {
 
-            svg circle.active {
-                filter: drop-shadow(0 0 10px var(--brightOrange));
+            clip-path: polygon(0 25.5%, 50% 0, 100% 25.5%, 100% 75%, 50% 100%, 0 75.3%);
+            cursor: pointer;
+            fill: var(--white);
+
+            image {
+                width: 18%;
+                height: 24.7%;
             }
+    
+            rect {
+                width: 18%;
+                height: 24.7%;
+            }
+        }
 
-            svg image {
-                width: 26.5%;
-                height: 26.5%;
-                clip-path: circle(40% at 50% 50%);
-                cursor: pointer;
+        .honeyCombBlock {
+
+            transition: transform .4s ease-out, filter .4s ease-out;
+
+            &.selected {
+
+                transform: scale(1.05) translate(-2.25%,-2%);
+                filter: drop-shadow(0px 3px 5px var(--brightOrange)) drop-shadow(0px -3px 5px var(--brightOrange));
+            }
+        }
+
+        .honeyCombBlock--thirdrow {
+            &.selected {
+                transform: scale(1.03) translate(-1.4%,-2%);
+            }
+        }
+
+        .honeyCombBlock--fourthrow {
+            &.selected {
+                transform: scale(1) translate(-0%,-1%);
+            }
+        }
+
+        .svgHexagon {
+
+            transition: transform .8s ease-out, opacity .5s ease-in;
+
+            &.active {
+                transform: scale3d(.2,.2,1);
+                opacity: 0;
             }
         }
     }

@@ -60,11 +60,10 @@ a {
     position: absolute;
     z-index: -1;
     content: "";
-    width: 100%;
+    width: 99%;
     height: 100%;
     top: 0;
     left: 0;
-    right: 0;
     background-color: var(--darkOrange);
     @include transformScale(1,0,ease-out,bottom)
 }

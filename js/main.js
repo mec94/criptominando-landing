@@ -1,13 +1,61 @@
 /*eslint-disable*/
 
-const sectionFirstSteps = document.getElementById('operar'); 
+// Section 'Why Us - Benefits'
 
-const teamTree = document.querySelector('.teamTree');
-const teamCard = document.querySelector('.teamCard');
+var listBenefits = document.querySelector('.sectionContent__whyus').querySelectorAll('ol li');
 
-const firstStepsBar = sectionFirstSteps.querySelectorAll('.bar-item')
+setUnderline()
+
+function setUnderline() {
+
+    // Start function for first line then set interval
+
+    function noDelaySetInterval(func) {
+        func();
+        return setInterval(func, 3500);
+    }
+
+    function startSetInterval() {
+        noDelaySetInterval(setItemUnderline);
+    }
+
+    let lineNumber = 0;
+
+    startSetInterval();
+
+    function setItemUnderline() {
+
+        // If first line, remove active from last one - in case needed
+
+        if (lineNumber == 0) {
+           listBenefits[3].classList.remove('active');
+        }
+
+        // If not first line, then remove underline from previous one
+
+        else if (lineNumber != 0) {
+            
+           listBenefits[lineNumber - 1].classList.remove('active');
+        }
+
+        listBenefits[lineNumber].classList.add('active');
+        lineNumber += 1;
+
+        // If last line, reset counter
+
+        if (lineNumber == 4) {
+            lineNumber = 0;
+        }
+
+    }
+
+}
 
 // Section 'First Steps'
+
+const sectionFirstSteps = document.getElementById('operar'); 
+
+const firstStepsBar = sectionFirstSteps.querySelectorAll('.bar-item')
 
 firstStepsBar.forEach( (item,index) => {
 
@@ -27,7 +75,7 @@ firstStepsBar.forEach( (item,index) => {
     })
 })
 
-// On Mobile, go to bar top when clicking an item, to ensure all content is shown
+// On Mobile, go top of section when clicking an item, to ensure all content is shown
 
 function goToTop(resolution,element) {
 
@@ -106,27 +154,30 @@ function setBarItemContent(itemIndex) {
 // Section Partners & Team
 
 
-// Interactive circle click detection
+// Honeycomb blocks click detection
 
-const teamCircleImage = teamTree.querySelector('svg').querySelectorAll('image');
+const honeyComb = document.querySelector('.honeyComb');
 
-    teamCircleImage.forEach( (el, index) => {
+const svgHexagon = honeyComb.querySelectorAll('.svgHexagon');
+const honeyCombBlock = honeyComb.querySelectorAll('.honeyCombBlock');
 
-        // Add click event for each circle
+    honeyCombBlock.forEach( (el, index) => {
+
+        // Add click event for each honeycomb hexagon
 
         el.addEventListener('click', () => {
 
-            let teamItemCircle = teamTree.querySelector('svg').querySelectorAll('circle');
-
             // Remove previous active classes
 
-            if (teamTree.querySelector('.active')) {
-                teamTree.querySelector('.active').classList.remove('active');
+            if (honeyComb.querySelector('.active')) {
+                honeyComb.querySelector('.active').classList.remove('active');
+                honeyComb.querySelector('.selected').classList.remove('selected');
             }
 
             // Only add class to clicked circle, then showCard
 
-            teamItemCircle[index].classList.add('active');
+            honeyCombBlock[index].classList.add('selected');
+            svgHexagon[index].classList.add('active');
 
             showCard(index);
         })
@@ -134,69 +185,117 @@ const teamCircleImage = teamTree.querySelector('svg').querySelectorAll('image');
 
 // Flip card & replace contents depending on side
 
-function showCard(circleIndex) {
+const teamCard = document.querySelector('.teamCard');
 
-    let imageSource = teamCircleImage[circleIndex].getAttribute('xlink:href');
+const teamCardDefault = teamCard.querySelector('.teamCard--default');
+const teamCardFront = teamCard.querySelector('.teamCard--front');
+const teamCardBack =  teamCard.querySelector('.teamCard--back');
 
-    let crewMemberTitle = 
-        [
-            'Facundo',
-            'Mijail',
-            'Matias',
-            'Lucia',
-            'Lucas L',
-            'Lucas R'
-        ];
+    function showCard(circleIndex) {
 
-    let crewMemberDescription =
-        [
-            'Descripción Facundo',
-            'Descripción Mijail',
-            'Descripción Matias',
-            'Descripción Lucia',
-            'Descripción Lucas L',
-            'Descripción Lucas R',
-        ];
-
-    flipCard()
-    replaceCardContent()
-
-    function flipCard() {
-        teamCard.firstElementChild.classList.toggle('active');
-    }
-    
-    function replaceCardContent() {
-
-        let teamCardFront = teamCard.querySelector('.teamCard--front');
-        let teamCardBack =  teamCard.querySelector('.teamCard--back');
-
-        // Determine if card is flipped & replace back or front content
-
-        if (teamCard.firstElementChild.classList.contains('active')) {
-
-        teamCardBack.children[0].firstElementChild.textContent =
-            crewMemberTitle[circleIndex];
-        teamCardBack.children[1].firstElementChild.src =
-            imageSource
-        teamCardBack.children[2].firstElementChild.textContent =
-            crewMemberDescription[circleIndex]
-
-        }
-
-        else {
-
-        teamCardFront.children[0].firstElementChild.textContent =
-            crewMemberTitle[circleIndex];
-        teamCardFront.children[1].firstElementChild.src =
-            imageSource
-        teamCardFront.children[2].firstElementChild.textContent =
-            crewMemberDescription[circleIndex]
-
-        }
+        let crewMemberTitle = 
+            [
+                'Miembro 1',
+                'Miembro 2',
+                'Miembro 3',
+                'Miembro 4',
+                'Miembro 5',
+                'Miembro 6',
+                'Miembro 7',
+                'Miembro 8',
+                'Miembro 9',
+                'Miembro 10',
+                'Miembro 11',
+                'Miembro 12'
+            ];
         
-    }
+        let crewMemberDescription =
+            [
+                'Descripción Miembro 1',
+                'Descripción Miembro 2',
+                'Descripción Miembro 3',
+                'Descripción Miembro 4',
+                'Descripción Miembro 5',
+                'Descripción Miembro 6',
+                'Descripción Miembro 7',
+                'Descripción Miembro 8',
+                'Descripción Miembro 9',
+                'Descripción Miembro 10',
+                'Descripción Miembro 11',
+                'Descripción Miembro 12'
+            ];
+        
+        let imageSource = honeyComb.querySelectorAll('svg g image')[circleIndex].getAttribute('xlink:href');
+        
+        flipCard()
+        replaceCardContent()
+
     
+        function replaceCardContent() {        
+
+            let isTeamCardFlipped = (teamCard.firstElementChild.classList.contains('active'));
+
+            // Determine if card is flipped & replace back or front content
+
+            if (isTeamCardFlipped) {
+
+                teamCardBack.style.display = 'block';
+
+                teamCardBack.children[0].firstElementChild.textContent =
+                    crewMemberTitle[circleIndex];
+                teamCardBack.children[1].firstElementChild.src =
+                    imageSource;
+                teamCardBack.querySelector('.teamCard__content').firstElementChild.textContent =
+                    crewMemberDescription[circleIndex]
+            }
+
+            else {
+
+            // Hide default first impression card & show member card instead
+           
+            teamCardFront.style.display = 'block';
+            teamCardDefault.style.opacity = '0'
+
+            teamCardFront.children[0].firstElementChild.textContent =
+                crewMemberTitle[circleIndex];
+            teamCardFront.children[1].firstElementChild.src =
+                imageSource;
+            teamCardFront.querySelector('.teamCard__content').firstElementChild.textContent =
+                crewMemberDescription[circleIndex]
+            }
+        
+        }
+    
+    }
+
+// Flip Card Function
+
+function flipCard() {
+    teamCard.firstElementChild.classList.toggle('active');
 }
+
+// Add 'go back' button to card (if already flipped)
+
+let resetCardBtn = document.querySelectorAll('.resetCardBtn');
+
+resetCardBtn.forEach( (b,index) => {
+
+    b.addEventListener('click', () => {
+
+        if (index == 1) {
+            teamCardDefault.style.opacity = '1';
+            teamCardDefault.classList.remove('active');
+            teamCardFront.style.display = 'none';
+            flipCard();
+        }
+        else {
+            teamCardDefault.style.opacity = '1';
+            teamCardDefault.classList.add('active');
+            teamCardBack.style.display = 'none';
+            flipCard();
+        }
+    })
+})
 
 // Get Current Year value with WordClockApi 
 
