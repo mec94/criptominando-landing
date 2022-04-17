@@ -225,7 +225,7 @@ main {
             color: var(--white);
 
             @media screen and (max-width: 800px) {
-                font-size: 3em;
+                font-size: 2.6em;
             }
 
             b {
@@ -304,7 +304,11 @@ main {
                 font-size: 1.7em;
                 font-weight: 600;
                 text-transform: uppercase;
-                color: var(--brightOrange)
+                color: var(--brightOrange);
+
+                @media screen and (max-width: 800px) {
+                    font-size: 1.5em;
+                }
             }
         }
 
@@ -315,6 +319,10 @@ main {
             color: var(--white);
             font-size: 1.6em;
             font-weight: 500;
+
+            @media screen and (max-width: 800px) {
+                font-size: 1.3em;
+            }
 
             li {
                 position: relative;
@@ -381,7 +389,7 @@ main {
         h3 {
             position: relative;
             margin-top: .4em;
-            font-size: 3em;
+            font-size: 2.5em;
             font-weight: 600;
             color: var(--white);
 
