@@ -282,7 +282,9 @@ resetCardBtn.forEach( (b,index) => {
 
     b.addEventListener('click', () => {
 
-        if (index == 1) {
+        let isTeamCardFlipped = (teamCard.firstElementChild.classList.contains('active'));
+
+        if (isTeamCardFlipped) {
             teamCardDefault.style.opacity = '1';
             teamCardDefault.classList.remove('active');
             teamCardFront.style.display = 'none';

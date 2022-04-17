@@ -404,7 +404,7 @@ main {
         width: 80%;
 
         @media screen and (max-width: 800px) {
-            margin: 4em 0;
+            margin: 1em 0;
             width: 90%;
         }
         
@@ -434,6 +434,7 @@ main {
 
             @media screen and (max-width: 800px) {
                 width: auto;
+                height: 3em;
                 padding: .8em 2em;
                 margin-bottom: .5em;
            
@@ -526,7 +527,7 @@ main {
         .mobileSidebar {
             display: none;
             position: absolute;
-            top: -1.5em;
+            top: -.5em;
             left: -.4em;
             border-radius: 10px;
             height: 100%;
@@ -750,6 +751,13 @@ main {
             &.active {
                 transform: rotateY(180deg);
             }
+
+            @media screen and (max-width: 800px) {
+
+                p:first-child {
+                    display: none;
+                }
+            }
         }
 
         &--front {
@@ -806,24 +814,6 @@ main {
                     transform: skew(-16deg);
                 }
 
-                .resetCardBtn {
-                    position: absolute;
-                    cursor: pointer;
-                    border: none;
-                    background: none;
-                    padding: 0;
-                    height: 70%;
-                    width: 100%;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-
-                    img {
-                        width: 100%;
-                        height: 100%
-                    }
-                }
-
                 img {
                     position: absolute;
                     height: 70%;
@@ -835,6 +825,38 @@ main {
             }
         }
 
+        .resetCardBtn {
+            position: absolute;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            height: 70%;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+            img {
+                width: 100%;
+                height: 100%
+            }
+
+        }
+
+        .resetCardBtnMobileContainer {
+            display: none;
+            position: absolute;
+            width: 3em;
+            height: 3em;
+            top: 40%;
+            right: -20%;
+
+            @media screen and (max-width: 800px) {
+                display: block;
+            }
+        }
+
         &__picture {
 
             @include dispFlex(center,center,row);
@@ -842,12 +864,15 @@ main {
             padding: 1em 2em;
 
             @media screen and (max-width: 800px) {
-                display: none;
+                height: 50%;
+                padding: 0;
             }
+
 
             img {
                 height: 100%;
                 object-fit: cover;
+    
             }
         }
 
@@ -879,10 +904,6 @@ main {
                     font-size: 1em;
                     height: 100%;
                     max-width: 100%;
-
-                    &:first-child {
-                        display: none;
-                    }
 
                     & + p {
                         margin-top: 0;
