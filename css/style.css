@@ -9,7 +9,7 @@
   --whiteOpacity: rgba(66, 66, 66, .9);
   --black: #282828;
   --darkGray: #645F5B;
-  --darkGrayOpacity: rgba(189, 189, 189, 0.3);
+  --darkGrayOpacity: rgba(226, 226, 226, 0.6);
 }
 
 .darkMode {
@@ -654,7 +654,7 @@ main {
 .sectionContent__whyus ol li::after {
   position: absolute;
   left: 2px;
-  bottom: -6px;
+  bottom: -5px;
   content: "";
   width: 99%;
   height: 2px;
@@ -1214,15 +1214,18 @@ main {
   color: var(--white2);
   font-weight: 500;
   text-transform: uppercase;
+  -webkit-transition: color .4s ease-in;
+  transition: color .4s ease-in;
 }
 
 .sectionContent .contact-button .button__right::before {
   position: absolute;
   content: '';
   border-radius: 0 10px 10px 0;
+  border: 2px solid var(--brightOrange);
   width: 100%;
   height: 99%;
-  background-color: var(--mediumOrange);
+  background-color: var(--white);
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
   -webkit-transition: -webkit-transform .3s ease-out;
@@ -1232,6 +1235,10 @@ main {
   -webkit-transform-origin: left;
           transform-origin: left;
   z-index: -1;
+}
+
+.sectionContent .contact-button:hover h3 {
+  color: var(--brightOrange);
 }
 
 .sectionContent .contact-button:hover .button__right::before {
@@ -1440,6 +1447,8 @@ main {
 }
 
 .sectionContent .teamCard__content {
+  position: relative;
+  z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1470,6 +1479,7 @@ main {
           margin-block-start: 0;
   max-width: 90%;
   font-size: 1.3em;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -1489,6 +1499,15 @@ main {
   .sectionContent .teamCard__content p + p {
     margin-top: 0;
   }
+}
+
+.sectionContent .teamCard__content .teamCardParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .sectionContent .teamCard__team {
