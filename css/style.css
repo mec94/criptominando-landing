@@ -545,7 +545,7 @@ main {
 @media screen and (max-width: 800px) {
   .sectionContent__left p {
     font-size: 1.6em;
-    max-width: 90%;
+    max-width: 95%;
     text-align: left;
   }
 }
@@ -1608,7 +1608,7 @@ main {
 .sectionContent .teamCard__content p {
   -webkit-margin-before: 0;
           margin-block-start: 0;
-  max-width: 90%;
+  max-width: 100%;
   font-size: 1.3em;
   font-weight: 500;
   line-height: 1.2;
@@ -1622,7 +1622,6 @@ main {
   .sectionContent .teamCard__content p {
     font-size: 1em;
     height: 100%;
-    max-width: 100%;
   }
   .sectionContent .teamCard__content p + p {
     margin-top: 0;
