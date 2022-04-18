@@ -810,6 +810,10 @@ main {
                 transform: rotateY(180deg);
             }
 
+            .teamCard__content {
+                height: 90%;
+            }
+
             @media screen and (max-width: 800px) {
 
                 p:first-child {
@@ -828,12 +832,17 @@ main {
 
         &__top {
             
+            @include dispFlex(space-between,center,row);
             position: relative;
-            padding: 1em 1.5em;
+            padding: .8em 1.5em;
             background-color: var(--brightOrange);
+            height: 12%;
+            overflow: hidden;
 
             @media screen and (max-width: 800px) {
-                padding: 1em 0;
+                @include dispFlex(center,center,row);
+                padding: .5em 0;
+                height: 16%;
             }
 
             h3 {
@@ -844,6 +853,7 @@ main {
 
                 @media screen and (max-width: 800px) {
                     text-align: center;
+                    font-size: 1.4em;
                 }
             }
 
@@ -863,9 +873,9 @@ main {
                 &::before {
                     position: absolute;
                     content: "";
-                    left: -.6em;
+                    left: -10%;
                     top: 0;
-                    width: 3em;
+                    width: 20%;
                     height: 100%;
                     background-color: var(--white);
                     z-index: -1;
@@ -889,7 +899,7 @@ main {
             border: none;
             background: none;
             padding: 0;
-            height: 70%;
+            height: 100%;
             width: 100%;
             top: 50%;
             left: 50%;
@@ -897,7 +907,7 @@ main {
 
             img {
                 width: 100%;
-                height: 100%
+                height: 60%
             }
 
         }
@@ -905,10 +915,14 @@ main {
         .resetCardBtnMobileContainer {
             display: none;
             position: absolute;
-            width: 3em;
-            height: 3em;
+            width: 2.5em;
+            height: 2.5em;
             top: 40%;
-            right: -22%;
+            right: -20%;
+
+            img {
+                height: 100%;
+            }
 
             @media screen and (max-width: 800px) {
                 display: block;
@@ -920,12 +934,12 @@ main {
             @include dispFlex(center,center,row);
             overflow: hidden;
             padding: 1em 2em;
+            height: 68%;
 
             @media screen and (max-width: 800px) {
-                height: 50%;
-                padding: 0;
+                padding: .5em 0 0;
+                height: 59%;
             }
-
 
             img {
                 height: 100%;
@@ -940,11 +954,11 @@ main {
             @include dispFlex(center,flex-start,row);
             padding: 1.2em;
             background-color: var(--darkGrayOpacity);
-            height: 100%;
+            height: 20%;
 
             @media screen and (max-width: 800px) {
-                height: 100%;
                 padding: .8em;
+                height: 25%;
             }
 
             p {
@@ -982,7 +996,7 @@ main {
 
         &__team {
 
-            @media screen and (min-width: 1440px) {
+            @media screen and (min-width: 1600px) {
                 @include dispFlex(space-between,center,column);
             }
 

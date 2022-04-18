@@ -1,5 +1,3 @@
-/*eslint-disable*/
-
 // Section 'Why Us - Benefits'
 
 var listBenefits = document.querySelector('.sectionContent__whyus').querySelectorAll('ol li');
@@ -72,6 +70,7 @@ firstStepsBar.forEach( (item,index) => {
         firstStepsBar[index].lastElementChild.classList.add('active');
 
         setBarItemContent(index);
+        goToTop('800', '.sectionContent__steps-bar')
     })
 })
 
@@ -81,8 +80,8 @@ function goToTop(resolution,element) {
 
     if (window.innerWidth <= resolution) {
 
-        document.querySelector(element).scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        document.querySelector(element).scrollIntoView();
+
     }
 
 }
@@ -103,11 +102,11 @@ function setBarItemContent(itemIndex) {
     let barItemImage = 
     [
         './img/iconChat.svg',
-        './img/iconHashpower.svg',
+        './img/iconTraining.svg',
+        './img/iconFunds.svg',
         './img/iconGPUMining.svg',
-        './img/iconRewards.svg',
-        './img/iconRewards.svg',
-        './img/iconRewards.svg'
+        './img/iconInvest.svg',
+        './img/iconEarnings.svg'
     ];
 
     // Replace content w/ array's one
@@ -179,6 +178,7 @@ const honeyCombBlock = honeyComb.querySelectorAll('.honeyCombBlock');
             honeyCombBlock[index].classList.add('selected');
             svgHexagon[index].classList.add('active');
 
+            goToTop('800', '#proyecto')
             showCard(index);
         })
     })
