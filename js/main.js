@@ -345,9 +345,26 @@ function setBackground(location,timing) {
 // Hamburguer Menu - Mobile Only
 
 const hamburguerMenu = document.querySelector('.hamburguerMenu');
+const clickOutsideHamburguer = document.getElementById('hamburguerMenuClickOutside')
 
 const leftNavUl = document.querySelector('.leftNav ul');
 
 hamburguerMenu.addEventListener('click', () => {
-    leftNavUl.classList.toggle('active')
+    leftNavUl.classList.toggle('mobile');
+    hamburguerMenu.classList.toggle('open');
+    clickOutsideHamburguer.classList.toggle('active');
+})
+
+leftNavUl.querySelectorAll('li').forEach( (menuItem) => {
+    menuItem.addEventListener('click', () => {
+        clickOutsideHamburguer.classList.remove('active');
+        leftNavUl.classList.remove('mobile');
+        hamburguerMenu.classList.remove('open');
+    })
+})
+
+clickOutsideHamburguer.addEventListener('click', () => {
+    clickOutsideHamburguer.classList.remove('active');
+    leftNavUl.classList.remove('mobile');
+    hamburguerMenu.classList.remove('open');
 })

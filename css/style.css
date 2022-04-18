@@ -9,7 +9,7 @@
   --whiteOpacity: rgba(66, 66, 66, .9);
   --black: #282828;
   --darkGray: #645F5B;
-  --darkGrayOpacity: rgba(226, 226, 226, 0.6);
+  --darkGrayOpacity: rgba(233, 233, 233, 0.4);
 }
 
 .darkMode {
@@ -21,7 +21,7 @@
   --whiteOpacity: rgba(255,255,255,.7);
   --black: #282828;
   --darkGray: #645F5B;
-  --darkGrayOpacity: rgba(100, 95, 91, .2);
+  --darkGrayOpacity: rgba(121, 116, 112, 0.4);
 }
 
 img {
@@ -206,13 +206,6 @@ header nav ul li:hover::after {
           transform: scaleX(1);
 }
 
-@media screen and (max-width: 800px) {
-  header nav ul li {
-    height: auto;
-    padding: 1em .5em;
-  }
-}
-
 header nav ul li::before {
   position: absolute;
   z-index: -1;
@@ -274,6 +267,7 @@ header nav ul a {
 @media screen and (max-width: 800px) {
   header nav ul a {
     color: var(--white2);
+    padding: 1em;
   }
 }
 
@@ -314,11 +308,11 @@ header .leftNav .hamburguerMenu {
   z-index: 200;
   position: fixed;
   padding: .5em .8em;
-  bottom: 1em;
+  bottom: 3em;
   right: 1em;
   width: 4em;
   height: 4em;
-  border-radius: 50%;
+  border-radius: 5px;
   background-color: var(--brightOrange);
 }
 
@@ -333,6 +327,26 @@ header .leftNav .hamburguerMenu span {
   width: 100%;
   height: .3em;
   background-color: var(--backgroundClr);
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+  border-radius: 2px;
+}
+
+header .leftNav .hamburguerMenu.open span:first-child {
+  -webkit-transform: rotate(-45deg) translate(-0.7em, 0.7em) scale(1.2);
+          transform: rotate(-45deg) translate(-0.7em, 0.7em) scale(1.2);
+}
+
+header .leftNav .hamburguerMenu.open span:nth-child(2) {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+header .leftNav .hamburguerMenu.open span:last-child {
+  -webkit-transform: rotate(45deg) translate(-0.7em, -0.7em) scale(1.2);
+          transform: rotate(45deg) translate(-0.7em, -0.7em) scale(1.2);
 }
 
 header .leftNav ul {
@@ -355,8 +369,6 @@ header .leftNav ul {
 @media screen and (max-width: 800px) {
   header .leftNav ul {
     display: block;
-    -webkit-transform: scale(0);
-            transform: scale(0);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -365,21 +377,27 @@ header .leftNav ul {
         -ms-flex-pack: center;
             justify-content: center;
     position: fixed;
-    bottom: 6em;
+    bottom: 5em;
     right: 1.2em;
-    border-radius: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 10px var(--darkOrange);
+            box-shadow: 0 0 10px var(--darkOrange);
     height: auto;
     background-color: var(--brightOrange);
-    -webkit-transition: -webkit-transform .3s ease-out;
-    transition: -webkit-transform .3s ease-out;
-    transition: transform .3s ease-out;
-    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+    -webkit-transition: opacity .4s ease-out, -webkit-transform .4s ease-out;
+    transition: opacity .4s ease-out, -webkit-transform .4s ease-out;
+    transition: transform .4s ease-out, opacity .4s ease-out;
+    transition: transform .4s ease-out, opacity .4s ease-out, -webkit-transform .4s ease-out;
     -webkit-transform-origin: bottom right;
             transform-origin: bottom right;
   }
-  header .leftNav ul.active {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+  header .leftNav ul.mobile {
+    -webkit-transform: scale(1) translateY(-3em);
+            transform: scale(1) translateY(-3em);
+    opacity: 1;
   }
 }
 
@@ -441,6 +459,21 @@ main {
 @media screen and (max-width: 800px) {
   main {
     padding-top: 10vh;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #hamburguerMenuClickOutside {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+  }
+  #hamburguerMenuClickOutside.active {
+    display: block;
   }
 }
 
@@ -1260,6 +1293,13 @@ main {
   z-index: -1;
 }
 
+@media screen and (max-width: 800px) {
+  .sectionContent .contact-button .button__right::before {
+    border: none;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
 .sectionContent .contact-button:hover h3 {
   color: var(--brightOrange);
 }
@@ -1292,6 +1332,7 @@ main {
 @media screen and (max-width: 800px) {
   .sectionContent .teamCard {
     position: relative;
+    width: 70%;
     height: 35vh;
     z-index: inherit;
   }
@@ -1317,7 +1358,7 @@ main {
 .sectionContent .teamCard__Side {
   position: absolute;
   overflow: hidden;
-  border: 2px solid var(--brightOrange);
+  border: 1px solid var(--brightOrange);
   border-top: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1336,6 +1377,12 @@ main {
           backface-visibility: hidden;
   width: 100%;
   height: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .sectionContent .teamCard__Side {
+    border: none;
+  }
 }
 
 .sectionContent .teamCard--default {
@@ -1451,7 +1498,7 @@ main {
   width: 3em;
   height: 3em;
   top: 40%;
-  right: -20%;
+  right: -22%;
 }
 
 @media screen and (max-width: 800px) {
@@ -1559,7 +1606,7 @@ main {
   padding: 1em 0 0;
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1440px) {
   .sectionContent .teamCard__team {
     display: -webkit-box;
     display: -ms-flexbox;
