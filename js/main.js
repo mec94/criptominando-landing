@@ -374,3 +374,23 @@ clickOutsideHamburguer.addEventListener('click', () => {
     leftNavUl.classList.remove('mobile');
     hamburguerMenu.classList.remove('open');
 })
+
+// Contact Us Footer Section
+
+const contactUsButton = document.querySelector('.footer__right').lastElementChild;
+const modalWindow = document.querySelector('.modalWindow');
+const closeButton = document.querySelector('.modalWindow button');
+
+contactUsButton.addEventListener('click', () => {
+    modalWindow.classList.toggle('active');
+})
+
+closeButton.addEventListener('click', () => {
+    modalWindow.classList.remove('active');
+})
+
+modalWindow.querySelectorAll('li').forEach((item) => {
+    item.addEventListener('click', () => {
+        modalWindow.classList.remove('active');
+    })
+})

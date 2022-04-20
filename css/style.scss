@@ -1156,4 +1156,52 @@ footer {
             width: 50%;
         }
     }
+
+    .modalWindow {
+        opacity: 0;
+        position: fixed;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: bottom;
+        transition: transform .4s ease-out, opacity .4s ease-out;
+        padding: 1em;
+        border-radius: 5px;
+        background-color: var(--brightOrange);
+        box-shadow: 0 0 20px var(--brightOrange);
+
+        li {
+            display: flex;
+            font-size: 2rem;
+
+            &:hover {
+                filter: drop-shadow(0 0 5px var(--white));
+            }
+
+            & + li {
+                margin-top: .5em;
+            }
+        }
+
+        img {
+            width: 2em;
+        }
+
+        button {
+            position: absolute;
+            cursor: pointer;
+            top: .4em;
+            right: .4em;
+            padding: 0;
+            border: none;
+            background: transparent;
+        }
+
+        &.active {
+            opacity: 1;
+            z-index: 300;
+        }
+    }
+
 }
