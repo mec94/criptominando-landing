@@ -116,7 +116,7 @@ function setBarItemContent(itemIndex) {
 
     let listItems = new Array();
 
-    listItems.push(['El te ayudará en todo el proceso para que puedas invertir con tranquilidad y seguridad.'])
+    listItems.push(['Te ayudará en todo el proceso para que puedas invertir con seguridad y tranquilidad.'])
     listItems.push(['Para hacerlo tendrás una capacitación previa que te explicará como funciona la minería y como vas a generar ganancias con esa inversión.'])
     listItems.push(['Deposita Criptomonedas a tu cuenta o podes cargar en efectivo con nosotros.']);
     listItems.push(['Podrás elegir que moneda queres minar y ver las ganancias estimadas de cada pool.']);
@@ -315,6 +315,8 @@ const darkModeToggle = document.getElementById('darkModeCheckbox');
 const mainHTML = document.querySelector('main');
 const backgroundLocation = "url('./img/backgroundcrypto2.jpeg')";
 const cmLogo = document.getElementById('criptominandoBigImage');
+
+localStorage.setItem('darkMode', 'on')
 
 if (localStorage.getItem('darkMode') == 'on') {
     document.body.classList.toggle('darkMode')
