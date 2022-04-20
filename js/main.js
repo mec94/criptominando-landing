@@ -195,24 +195,24 @@ const teamCardBack =  teamCard.querySelector('.teamCard--back');
 
         let crewMemberTitle = 
             [
-                'Miembro 1',
-                'Miembro 2',
-                'Miembro 3',
-                'Miembro 4',
-                'Miembro 5',
-                'Miembro 6',
-                'Miembro 7',
-                'Miembro 8',
-                'Miembro 9',
-                'Miembro 10',
-                'Miembro 11',
-                'Miembro 12'
+                'Lucas Ledesma',
+                'Gerardo Lopez',
+                'Manuela Escudero',
+                'Facundo Ledesma',
+                'Lucas Romano',
+                'Matias Mieras',
+                'Lucia Errecart',
+                'Mijail Cuesta',
+                'Verónica Haiwit',
+                'Macarena Rivas',
+                'Nazareno',
+                'Pablo'
             ];
         
         let crewMemberDescription =
             [
-                'Descripción Miembro 1',
-                'Descripción Miembro 2',
+                'CEO & Founder',
+                'COO & Founder',
                 'Descripción Miembro 3',
                 'Descripción Miembro 4',
                 'Descripción Miembro 5',
