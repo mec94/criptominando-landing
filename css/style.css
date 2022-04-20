@@ -1381,7 +1381,8 @@ main {
 
 @media screen and (max-width: 800px) {
   .sectionContent .teamCard__Side {
-    border: none;
+    -webkit-box-shadow: 0px 0px 12px var(--darkOrange);
+            box-shadow: 0px 0px 12px var(--darkOrange);
   }
 }
 

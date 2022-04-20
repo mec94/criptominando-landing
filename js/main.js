@@ -314,11 +314,13 @@ var currentYear =
 const darkModeToggle = document.getElementById('darkModeCheckbox');
 const mainHTML = document.querySelector('main');
 const backgroundLocation = "url('./img/backgroundcrypto2.jpeg')";
+const cmLogo = document.getElementById('criptominandoBigImage');
 
 if (localStorage.getItem('darkMode') == 'on') {
     document.body.classList.toggle('darkMode')
     darkModeToggle.checked = true;
     setBackground(backgroundLocation,200);
+    cmLogo.src = './img/Logo_mecanizado_ON.png';
 }
 
 darkModeToggle.addEventListener('click', () => {
@@ -328,10 +330,12 @@ darkModeToggle.addEventListener('click', () => {
     if (document.body.classList.contains('darkMode')) {
         localStorage.setItem('darkMode', 'on');
         setBackground(backgroundLocation,200);
+        cmLogo.src = './img/Logo_mecanizado_ON.png'
     }
     else {
         localStorage.setItem('darkMode', 'off')
         setBackground('none',0);
+        cmLogo.src = './img/Logo_mecanizado_OFF.png'
     }
 
 })
