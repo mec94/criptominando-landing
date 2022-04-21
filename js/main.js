@@ -93,8 +93,8 @@ function setBarItemContent(itemIndex) {
     let barItemTitle = 
     [
         'Hablá con un asesor',
+        'Capacitate',
         'Crea tu cuenta',
-        'Item',
         'Carga cripto en tu cuenta',
         'Elige donde minar',
         'Aceptar los términos y condiciones',
@@ -104,10 +104,10 @@ function setBarItemContent(itemIndex) {
     [
         './img/iconChat.svg',
         './img/iconTraining.svg',
-        './img/iconFunds.svg',
         './img/iconGPUMining.svg',
+        './img/iconFunds.svg',
         './img/iconInvest.svg',
-        './img/iconEarnings.svg',
+        './img/iconTerms.svg',
         './img/iconEarnings.svg'
     ];
 
@@ -118,13 +118,13 @@ function setBarItemContent(itemIndex) {
 
     let listItems = new Array();
 
-    listItems.push(['Te ayudará en todo el proceso para que puedas invertir con seguridad y tranquilidad.'])
-    listItems.push(['Para hacerlo tendrás una capacitación previa que te explicará como funciona la minería y como vas a generar ganancias con esa inversión.'])
-    listItems.push(['Item']);
-    listItems.push(['Deposita Criptomonedas a tu cuenta o podes cargar en efectivo con nosotros.']);
+    listItems.push(['Te ayuda en todo el proceso para comprar tu participación en el pool que seleccionarás más adelante.'])
+    listItems.push(['Antes de crear tu cuenta recibirás una capacitación de conocimientos generales sobre criptomonedas.'])
+    listItems.push(['Tendremos que ingresarte al sistema que te permitirá además de generar tus ganancias, empezar con tu sistema de referidos.']);
+    listItems.push(['¡Agregá los fondos para comprar tu parte del pool desde tu wallet preferida!']);
     listItems.push(['Podrás elegir que moneda queres minar y ver las ganancias estimadas de cada pool.']);
-    listItems.push(['Con tu saldo de billetera vas a poder comprar tu participación a partir de 10 dólares en cripto.']);
-    listItems.push(['Empeza a recibir los beneficios en tu billetera dentro de la plataforma.']);
+    listItems.push(['Se te proporcionarán los términos y condiciones de esta compra para el pool elegido.']);
+    listItems.push(['Empezá a recibir los beneficios en tu billetera dentro de la plataforma.']);
 
     createListItems(itemIndex)
 
@@ -204,7 +204,7 @@ const teamCardBack =  teamCard.querySelector('.teamCard--back');
                 'Facundo Ledesma',
                 'Macarena Rivas',
                 'Matias Mieras',
-                'Pablo',
+                'Pablo Estevez',
                 'Mijail Cuesta',
                 'Verónica Haiwit',
                 'Lucas Romano',
@@ -218,12 +218,12 @@ const teamCardBack =  teamCard.querySelector('.teamCard--back');
                 'COO & Founder',
                 'Dirección General',
                 'Líder de Exchange',
-                'Administración',
-                'Marketing',
-                'Programación Backend',
-                'Maquetación y desarrollo web',
+                'Líder de Administración',
+                'Líder de Marketing',
+                'Líder de Programación',
+                'Programación web',
                 'Social Media Manager',
-                'Research/Story Telling',
+                'Research & Story Telling',
                 'Programación Front End',
                 'Diseñadora Gráfica'
             ];
