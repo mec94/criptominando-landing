@@ -1577,7 +1577,7 @@ main {
   -o-object-fit: cover;
      object-fit: cover;
   position: relative;
-  bottom: -2%;
+  bottom: -1px;
 }
 
 .sectionContent .teamCard__content {
@@ -1701,7 +1701,7 @@ main {
 
 .sectionContent .teamTree .honeyComb g image {
   width: 18%;
-  height: 24.7%;
+  y: 23px;
 }
 
 .sectionContent .teamTree .honeyComb g rect {

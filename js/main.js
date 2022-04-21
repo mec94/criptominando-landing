@@ -94,9 +94,10 @@ function setBarItemContent(itemIndex) {
     [
         'Hablá con un asesor',
         'Crea tu cuenta',
+        'Item',
         'Carga cripto en tu cuenta',
         'Elige donde minar',
-        'Comprar',
+        'Aceptar los términos y condiciones',
         'Recibir ganancias',
     ];
     let barItemImage = 
@@ -106,6 +107,7 @@ function setBarItemContent(itemIndex) {
         './img/iconFunds.svg',
         './img/iconGPUMining.svg',
         './img/iconInvest.svg',
+        './img/iconEarnings.svg',
         './img/iconEarnings.svg'
     ];
 
@@ -118,6 +120,7 @@ function setBarItemContent(itemIndex) {
 
     listItems.push(['Te ayudará en todo el proceso para que puedas invertir con seguridad y tranquilidad.'])
     listItems.push(['Para hacerlo tendrás una capacitación previa que te explicará como funciona la minería y como vas a generar ganancias con esa inversión.'])
+    listItems.push(['Item']);
     listItems.push(['Deposita Criptomonedas a tu cuenta o podes cargar en efectivo con nosotros.']);
     listItems.push(['Podrás elegir que moneda queres minar y ver las ganancias estimadas de cada pool.']);
     listItems.push(['Con tu saldo de billetera vas a poder comprar tu participación a partir de 10 dólares en cripto.']);
@@ -199,30 +202,30 @@ const teamCardBack =  teamCard.querySelector('.teamCard--back');
                 'Gerardo Lopez',
                 'Manuela Escudero',
                 'Facundo Ledesma',
-                'Lucas Romano',
+                'Macarena Rivas',
                 'Matias Mieras',
-                'Lucia Errecart',
+                'Pablo',
                 'Mijail Cuesta',
                 'Verónica Haiwit',
-                'Macarena Rivas',
-                'Nazareno',
-                'Pablo'
+                'Lucas Romano',
+                'Nazareno Molinari',
+                'Lucia Errecart'
             ];
         
         let crewMemberDescription =
             [
                 'CEO & Founder',
                 'COO & Founder',
-                'Descripción Miembro 3',
-                'Descripción Miembro 4',
-                'Descripción Miembro 5',
-                'Descripción Miembro 6',
-                'Descripción Miembro 7',
-                'Descripción Miembro 8',
-                'Descripción Miembro 9',
-                'Descripción Miembro 10',
-                'Descripción Miembro 11',
-                'Descripción Miembro 12'
+                'Dirección General',
+                'Líder de Exchange',
+                'Administración',
+                'Marketing',
+                'Programación Backend',
+                'Maquetación y desarrollo web',
+                'Social Media Manager',
+                'Research/Story Telling',
+                'Programación Front End',
+                'Diseñadora Gráfica'
             ];
         
         let imageSource = honeyComb.querySelectorAll('svg g image')[circleIndex].getAttribute('xlink:href');
